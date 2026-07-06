@@ -8,6 +8,9 @@ import { ActivityCard } from "@/components/ActivityCard";
 import { ComparisonTable } from "@/components/ComparisonTable";
 import { CTASection } from "@/components/CTASection";
 import { FAQ, faqJsonLd } from "@/components/FAQ";
+import { ReadMore } from "@/components/ReadMore";
+import { Wave } from "@/components/Wave";
+import type { LandingSection } from "@/data/landing-types";
 
 type Props = { params: { landing: string } };
 
@@ -30,18 +33,24 @@ export function generateMetadata({ params }: Props): Metadata {
   };
 }
 
-function Hero({ h1, intro }: { h1: string; intro: string[] }) {
+function Hero({ h1, intro, eyebrow }: { h1: string; intro: string[]; eyebrow: string }) {
+  const [first, ...rest] = intro;
   return (
-    <section className="border-b border-navy-900/5 bg-gradient-to-b from-electric-50/60 to-white">
-      <div className="container-site py-14">
-        <h1 className="max-w-3xl text-3xl font-extrabold tracking-tight text-navy-900 sm:text-4xl">
+    <section className="relative overflow-hidden bg-gradient-to-b from-electric-50 to-white">
+      <div className="pointer-events-none absolute -right-20 -top-16 h-64 w-64 rounded-full bg-sunrise-100 blur-3xl" aria-hidden />
+      <div className="container-site relative py-14">
+        <p className="eyebrow">{eyebrow}</p>
+        <h1 className="mt-4 max-w-3xl text-3xl font-extrabold leading-tight tracking-tight text-navy-900 sm:text-[42px]">
           {h1}
         </h1>
-        <div className="prose-site mt-6 max-w-3xl">
-          {intro.map((p, i) => (
-            <p key={i}>{p}</p>
-          ))}
-        </div>
+        <p className="prose-site mt-5">{first}</p>
+        {rest.length > 0 && (
+          <ReadMore>
+            {rest.map((p, i) => (
+              <p key={i}>{p}</p>
+            ))}
+          </ReadMore>
+        )}
         <div className="mt-7 flex flex-wrap gap-3">
           <Link href="#enquiry" className="btn-primary">
             Get a curated plan
@@ -50,6 +59,41 @@ function Hero({ h1, intro }: { h1: string; intro: string[] }) {
             Browse all activities
           </Link>
         </div>
+      </div>
+    </section>
+  );
+}
+
+const sectionEmojis = ["🧭", "🧩", "⚡", "🎪", "🌟", "🛠️"];
+
+function ContentSections({ sections }: { sections: LandingSection[] }) {
+  return (
+    <section className="container-site mt-14">
+      <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        {sections.map((section, i) => {
+          const [first, ...rest] = section.paragraphs;
+          return (
+            <div
+              key={section.heading}
+              className="rounded-3xl border-2 border-navy-900/10 bg-white p-6 shadow-card"
+            >
+              <span className={`icon-dot ${i % 2 ? "bg-sunrise-50" : "bg-electric-50"}`}>
+                {sectionEmojis[i % sectionEmojis.length]}
+              </span>
+              <h2 className="mt-4 text-lg font-extrabold leading-snug text-navy-900">
+                {section.heading}
+              </h2>
+              <p className="prose-site mt-3 text-sm">{first}</p>
+              {rest.length > 0 && (
+                <ReadMore>
+                  {rest.map((p, j) => (
+                    <p key={j}>{p}</p>
+                  ))}
+                </ReadMore>
+              )}
+            </div>
+          );
+        })}
       </div>
     </section>
   );
@@ -88,11 +132,16 @@ export default function LandingPage({ params }: Props) {
 
     return (
       <>
-        <Hero h1={categoryPage.h1} intro={categoryPage.intro} />
+        <Hero h1={categoryPage.h1} intro={categoryPage.intro} eyebrow="🎪 Activity category" />
 
         {matched.length > 0 && (
-          <section className="container-site mt-14">
-            <h2 className="h-section">Recommended activities</h2>
+          <section className="container-site mt-12">
+            <div className="flex items-end justify-between gap-4">
+              <h2 className="h-section">Recommended activities</h2>
+              <Link href="/team-building-activities" className="section-link hidden sm:block">
+                See all →
+              </Link>
+            </div>
             <div className="mt-6 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
               {matched.map((a) => (
                 <ActivityCard key={a.slug} activity={a} />
@@ -101,16 +150,15 @@ export default function LandingPage({ params }: Props) {
           </section>
         )}
 
-        {categoryPage.sections.map((section) => (
-          <section key={section.heading} className="container-site mt-14">
-            <h2 className="h-section">{section.heading}</h2>
-            <div className="prose-site mt-4 max-w-3xl">
-              {section.paragraphs.map((p, i) => (
-                <p key={i}>{p}</p>
-              ))}
-            </div>
-          </section>
-        ))}
+        <Wave fill="#f8f7fa" className="mt-14" />
+        <div className="bg-mist pb-2 pt-2">
+          <div className="container-site">
+            <p className="eyebrow">📖 The practical guide</p>
+          </div>
+          <ContentSections sections={[...categoryPage.sections]} />
+          <div className="pb-10" />
+        </div>
+        <Wave fill="#f8f7fa" flip />
 
         {categoryPage.comparisonTable && <ComparisonTable table={categoryPage.comparisonTable} />}
 
@@ -143,7 +191,7 @@ export default function LandingPage({ params }: Props) {
 
   return (
     <>
-      <Hero h1={page.h1} intro={page.intro} />
+      <Hero h1={page.h1} intro={page.intro} eyebrow={`📍 ${page.city}`} />
 
       <section className="container-site mt-14">
         <h2 className="h-section">Popular formats in {page.city}</h2>
@@ -169,16 +217,14 @@ export default function LandingPage({ params }: Props) {
         </p>
       </section>
 
-      {page.sections.map((section) => (
-        <section key={section.heading} className="container-site mt-14">
-          <h2 className="h-section">{section.heading}</h2>
-          <div className="prose-site mt-4 max-w-3xl">
-            {section.paragraphs.map((p, i) => (
-              <p key={i}>{p}</p>
-            ))}
-          </div>
-        </section>
-      ))}
+      <Wave fill="#f8f7fa" className="mt-14" />
+      <div className="bg-mist pb-10 pt-2">
+        <div className="container-site">
+          <p className="eyebrow">📖 Local know-how</p>
+        </div>
+        <ContentSections sections={[...page.sections]} />
+      </div>
+      <Wave fill="#f8f7fa" flip />
 
       <FAQ items={page.faqs} />
 

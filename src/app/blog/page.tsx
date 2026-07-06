@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { CTASection } from "@/components/CTASection";
 import { FAQ, faqJsonLd } from "@/components/FAQ";
+import { ReadMore } from "@/components/ReadMore";
 import { site } from "@/config/site";
 
 export const metadata: Metadata = {
@@ -141,6 +142,8 @@ export default function BlogPage() {
               say.
             </p>
             <p>This blog is different.</p>
+          </div>
+          <ReadMore>
             <p>
               We write what we've learned from running hundreds of corporate
               programs across India. What worked. What didn't. What we changed
@@ -152,7 +155,7 @@ export default function BlogPage() {
               got handed an offsite to plan, or a founder thinking through how
               to build culture from scratch, there's something here for you.
             </p>
-          </div>
+          </ReadMore>
           <Link href="/contact-us" className="btn-primary mt-6">
             Skip the reading and plan a free program call →
           </Link>

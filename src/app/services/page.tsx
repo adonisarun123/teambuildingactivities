@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { CTASection } from "@/components/CTASection";
 import { FAQ, faqJsonLd } from "@/components/FAQ";
+import { ReadMore } from "@/components/ReadMore";
 import { site } from "@/config/site";
 
 export const metadata: Metadata = {
@@ -277,23 +278,26 @@ export default function ServicesPage() {
           </h2>
           <div className="prose-site mt-4 max-w-3xl">
             <p>
+              We organised this page by <strong>what's actually happening in
+              your team</strong> — not by a menu of activities. Pick the
+              situation that sounds like yours.
+            </p>
+          </div>
+          <ReadMore>
+            <p>
               Most of them are. Pick a few activities. Add a venue. Get a bill.
               That works if you already know exactly what you need. Most HR
               managers don't, and that's not a flaw. That's the job.
             </p>
             <p>
               You've been handed a budget, a headcount, and a vague brief like
-              &ldquo;do something for the team.&rdquo; So we organised this
-              page differently. Instead of listing activities, we organised our
-              services by <strong>what's actually happening in your team</strong>.
+              &ldquo;do something for the team.&rdquo; Scroll through the
+              categories below. Each one tells you when to use it, what it's
+              good for, and what to expect. If you're still not sure which fits
+              — that's normal. A 20-minute call sorts it out faster than
+              another hour of browsing.
             </p>
-            <p>
-              Scroll through the categories below. Each one tells you when to
-              use it, what it's good for, and what to expect. If you're still
-              not sure which fits — that's normal. A 20-minute call sorts it
-              out faster than another hour of browsing.
-            </p>
-          </div>
+          </ReadMore>
           <Link href="/contact-us" className="btn-primary mt-6">
             Book your free program design call →
           </Link>
@@ -318,10 +322,15 @@ export default function ServicesPage() {
             <div className="mt-5 grid gap-8 lg:grid-cols-[1fr_360px]">
               <div>
                 <div className="prose-site max-w-3xl">
-                  {s.body.map((p, i) => (
-                    <p key={i}>{p}</p>
-                  ))}
+                  <p>{s.body[0]}</p>
                 </div>
+                {s.body.length > 1 && (
+                  <ReadMore>
+                    {s.body.slice(1).map((p, i) => (
+                      <p key={i}>{p}</p>
+                    ))}
+                  </ReadMore>
+                )}
                 <h3 className="mt-7 font-bold text-navy-900">{s.listHeading}</h3>
                 <ul className="mt-4 grid gap-3 sm:grid-cols-2">
                   {s.items.map((item) => (

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { CTASection } from "@/components/CTASection";
 import { FAQ, faqJsonLd } from "@/components/FAQ";
+import { ReadMore } from "@/components/ReadMore";
 import { site } from "@/config/site";
 
 export const metadata: Metadata = {
@@ -110,6 +111,8 @@ export default function AboutPage() {
           </h2>
           <div className="prose-site mt-4 max-w-3xl">
             <p>It teaches you to make every mistake worth making.</p>
+          </div>
+          <ReadMore>
             <p>
               We've designed activities that flopped and figured out why. We've
               watched a treasure hunt save a team that was three weeks from
@@ -127,7 +130,7 @@ export default function AboutPage() {
               And a working point of view on what actually changes how teams
               work — versus what just makes for a good Instagram post.
             </p>
-          </div>
+          </ReadMore>
           <Link href="/contact-us" className="btn-primary mt-6">
             Book your free discovery call →
           </Link>
@@ -158,12 +161,15 @@ export default function AboutPage() {
           <h2 className="h-section">Where we deliver programs</h2>
           <div className="prose-site mt-4 max-w-3xl">
             <p>We work across 27+ Indian cities. From the obvious to the less obvious.</p>
-            <p>
-              The obvious cities include Bangalore, Mumbai, Delhi, Hyderabad,
-              Chennai, Pune, and Gurgaon. The less obvious destinations include
-              Munnar, Coorg, Wayanad, Manali, Shillong, Jaisalmer, Lonavala,
-              Manesar, Neemrana, Kabini, and Chikmagalur.
-            </p>
+          </div>
+          <div className="mt-5 flex max-w-3xl flex-wrap gap-2">
+            {["Bangalore (HQ)", "Mumbai", "Delhi NCR", "Hyderabad", "Chennai", "Pune", "Gurgaon", "Munnar", "Coorg", "Wayanad", "Manali", "Shillong", "Jaisalmer", "Lonavala", "Manesar", "Neemrana", "Kabini", "Chikmagalur"].map((c) => (
+              <span key={c} className="rounded-full border-2 border-navy-900/10 bg-white px-3.5 py-1.5 text-xs font-bold text-navy-800">
+                {c}
+              </span>
+            ))}
+          </div>
+          <ReadMore>
             <p>
               Our Bangalore HQ runs the largest volume of programs. But our
               Delhi/NCR operations have grown sharply over the last 24 months.
@@ -175,7 +181,7 @@ export default function AboutPage() {
               and globally. Active client teams in the US, UK, Singapore, and
               the Middle East.
             </p>
-          </div>
+          </ReadMore>
           <Link href="/contact-us" className="btn-primary mt-6">
             Plan a program in your city today →
           </Link>
@@ -184,17 +190,25 @@ export default function AboutPage() {
 
       <section className="container-site mt-14">
         <h2 className="h-section">Who we work with</h2>
-        <div className="prose-site mt-4 max-w-3xl">
-          <p>
-            Companies that want outcomes — not just events. Our client base is
-            weighted toward four sectors: IT and ITES companies (large product
-            firms, IT services majors, captive GCCs, and well-funded startups);
-            BFSI organisations (private banks, NBFCs, insurance companies, and
-            fintech firms); manufacturing and engineering companies (global
-            manufacturers with India operations); and consulting and
-            professional services firms (Big Four firms, strategy boutiques,
-            and law firms).
-          </p>
+        <p className="prose-site mt-4">
+          Companies that want outcomes — not just events. Our client base is
+          weighted toward four sectors.
+        </p>
+        <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          {[
+            ["💻", "IT & ITES", "Large product firms, IT services majors, captive GCCs, and well-funded startups."],
+            ["🏦", "BFSI", "Private banks, NBFCs, insurance companies, and fintech firms."],
+            ["🏭", "Manufacturing", "Global manufacturers and engineering companies with India operations."],
+            ["📊", "Consulting", "Big Four firms, strategy boutiques, and law firms."],
+          ].map(([emoji, t, d]) => (
+            <div key={t} className="rounded-3xl border-2 border-navy-900/10 bg-white p-5 shadow-card">
+              <span className="text-2xl">{emoji}</span>
+              <h3 className="mt-2 font-extrabold text-navy-900">{t}</h3>
+              <p className="mt-1.5 text-sm leading-6 text-navy-800/85">{d}</p>
+            </div>
+          ))}
+        </div>
+        <ReadMore>
           <p>
             We also work with healthcare and pharmaceutical companies, retail
             and e-commerce firms, and a growing number of mid-sized family-run
@@ -207,7 +221,7 @@ export default function AboutPage() {
             Cross-functional collaboration. Manager effectiveness. Post-merger
             integration. New joiner ramp-up time.
           </p>
-        </div>
+        </ReadMore>
       </section>
 
       <section className="container-site mt-14">

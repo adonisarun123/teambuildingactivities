@@ -6,6 +6,8 @@ import { ActivityCard } from "@/components/ActivityCard";
 import { ActivityMedia } from "@/components/ActivityMedia";
 import { CTASection } from "@/components/CTASection";
 import { FAQ, faqJsonLd } from "@/components/FAQ";
+import { ReadMore } from "@/components/ReadMore";
+import { Wave } from "@/components/Wave";
 import { site } from "@/config/site";
 
 export const metadata: Metadata = {
@@ -133,37 +135,56 @@ export default function HomePage() {
 
   return (
     <>
-      {/* Hero — light, product-first */}
-      <section className="border-b border-navy-900/5 bg-gradient-to-b from-electric-50/60 to-white">
-        <div className="container-site py-12 sm:py-16">
-          <p className="tag">Facilitator-led · 27+ Indian cities · 13+ years</p>
-          <h1 className="mt-4 max-w-3xl text-3xl font-extrabold leading-tight tracking-tight text-navy-900 sm:text-5xl">
-            What If Your Next Team Building Activity{" "}
-            <span className="text-electric-600">Actually Changed How Your Team Works?</span>
+      {/* Hero — light, playful, product-first */}
+      <section className="relative overflow-hidden bg-gradient-to-b from-electric-50 to-white">
+        <div className="pointer-events-none absolute -left-20 top-10 h-64 w-64 rounded-full bg-sunrise-100 blur-3xl" aria-hidden />
+        <div className="pointer-events-none absolute -right-16 bottom-0 h-72 w-72 rounded-full bg-electric-100 blur-3xl" aria-hidden />
+        <div className="pointer-events-none absolute right-8 top-16 hidden select-none gap-3 lg:flex" aria-hidden>
+          {["🥁", "🗺️", "🛶", "🎭"].map((e, i) => (
+            <span
+              key={e}
+              className={`grid h-16 w-16 place-items-center rounded-3xl bg-white text-3xl shadow-lift ${i % 2 ? "translate-y-6 rotate-6" : "-rotate-6"}`}
+            >
+              {e}
+            </span>
+          ))}
+        </div>
+        <div className="container-site relative py-14 sm:py-20">
+          <p className="eyebrow">🎯 Facilitator-led team building</p>
+          <h1 className="mt-5 max-w-3xl text-4xl font-extrabold leading-[1.1] tracking-tight text-navy-900 sm:text-6xl">
+            Team building that{" "}
+            <span className="relative inline-block text-electric-600">
+              actually works
+              <svg viewBox="0 0 200 12" className="absolute -bottom-1 left-0 w-full" aria-hidden>
+                <path d="M2 9 Q100 -4 198 8" stroke="#f97d09" strokeWidth="5" fill="none" strokeLinecap="round" />
+              </svg>
+            </span>{" "}
+            on Monday morning
           </h1>
-          <p className="mt-4 max-w-2xl text-base leading-7 text-navy-800 sm:text-lg sm:leading-8">
-            Structured experiences with a clear learning goal, run by trained
-            facilitators, and closed with the debrief most vendors skip —
-            because that's where behaviour actually changes.
+          <p className="mt-5 max-w-xl text-lg leading-8 text-navy-800">
+            Structured experiences, trained facilitators, and the debrief most
+            vendors skip — across 27+ Indian cities.
           </p>
           <div className="mt-7 flex flex-wrap gap-3">
-            <Link href="/contact-us" className="btn-primary !px-7 !py-3.5">
-              Book a free 20-minute discovery call →
+            <Link href="/contact-us" className="btn-primary !px-7 !py-3.5 !text-base">
+              Book a free discovery call →
             </Link>
-            <Link href="/team-building-activities" className="btn-secondary !px-7 !py-3.5">
+            <Link href="/team-building-activities" className="btn-secondary !px-7 !py-3.5 !text-base">
               Explore activities
             </Link>
           </div>
-          <dl className="mt-10 flex flex-wrap gap-x-10 gap-y-4">
+          <dl className="mt-10 flex flex-wrap gap-3">
             {[
-              [site.stats.yearsExperience, "years of programs"],
-              [site.stats.citiesCovered, "Indian cities"],
+              [site.stats.yearsExperience, "years"],
+              [site.stats.citiesCovered, "cities"],
               [site.stats.groupSizes, "group sizes"],
-              [site.stats.rebookRate, "rebook rate in 12 months"],
+              [site.stats.rebookRate, "rebook rate"],
             ].map(([stat, label]) => (
-              <div key={label} className="flex items-baseline gap-2">
-                <dt className="text-xl font-extrabold text-navy-900 sm:text-2xl">{stat}</dt>
-                <dd className="text-sm text-navy-800/70">{label}</dd>
+              <div key={label} className="stat-pill">
+                <dt className="order-2 text-xs font-bold uppercase tracking-wide text-navy-800/60">
+                  {label}
+                </dt>
+                <dd className="order-1 text-lg font-extrabold text-electric-600">{stat}</dd>
               </div>
             ))}
           </dl>
@@ -215,70 +236,89 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Editorial: why every site looks the same */}
-      <section className="mt-16 bg-mist py-14">
-        <div className="container-site grid gap-10 lg:grid-cols-2">
-          <div>
-            <h2 className="h-section">Why every team-building website looks exactly the same</h2>
-            <div className="prose-site mt-5">
-              <p>
+      {/* Editorial: our point of view — compact, collapsible */}
+      <Wave fill="#f8f7fa" className="mt-16" />
+      <section className="bg-mist pb-14 pt-4">
+        <div className="container-site">
+          <p className="eyebrow">💡 Our point of view</p>
+          <div className="mt-5 grid gap-6 lg:grid-cols-2">
+            <div className="rounded-3xl border-2 border-navy-900/10 bg-white p-7 shadow-card">
+              <span className="icon-dot bg-electric-50">🔁</span>
+              <h2 className="mt-4 text-xl font-extrabold text-navy-900">
+                Why every team-building website looks exactly the same
+              </h2>
+              <p className="prose-site mt-3">
                 You're here because someone said, &ldquo;Let's do something for
-                the team.&rdquo; Your manager. Your CHRO. Your founder. You
-                opened a tab, typed &ldquo;team building activities,&rdquo; and
-                landed on a page that looks like every other one. A grid of
-                treasure hunts. Photos of people in matching t-shirts laughing
-                too hard. A contact form.
+                the team.&rdquo; You opened a tab, typed &ldquo;team building
+                activities,&rdquo; and landed on a page that looks like every
+                other one. Let's skip that part.
               </p>
-              <p>Let's skip that part.</p>
-              <p>
-                In hundreds of corporate programs across 27+ Indian cities over
-                the last 13 years, we've watched one thing consistently move
-                the needle on team performance. And it's never the activity
-                itself. It's the <strong>debrief</strong> — the 20 minutes
-                after the activity ends, when a trained facilitator walks the
-                team through what just happened. Why one person took charge and
-                then disappeared. Why the loudest voice wasn't the most useful
-                one. Why two sub-teams compete instead of sharing information.
-              </p>
-              <p>That's the part most team-building companies skip. That's where we focus.</p>
+              <ReadMore>
+                <p>
+                  A grid of treasure hunts. Photos of people in matching
+                  t-shirts laughing too hard. A contact form. Your manager,
+                  CHRO or founder asked for &ldquo;something for the
+                  team&rdquo; — and every vendor answers with the same page.
+                </p>
+                <p>
+                  In hundreds of corporate programs across 27+ Indian cities
+                  over the last 13 years, we've watched one thing consistently
+                  move the needle on team performance. And it's never the
+                  activity itself. It's the <strong>debrief</strong> — the 20
+                  minutes after the activity ends, when a trained facilitator
+                  walks the team through what just happened. Why one person
+                  took charge and then disappeared. Why the loudest voice
+                  wasn't the most useful one. Why two sub-teams compete instead
+                  of sharing information.
+                </p>
+                <p>
+                  That's the part most team-building companies skip. That's
+                  where we focus.
+                </p>
+              </ReadMore>
+              <Link href="/contact-us" className="btn-primary mt-5">
+                Book a free discovery call →
+              </Link>
             </div>
-            <Link href="/contact-us" className="btn-primary mt-6">
-              Book a free 20-minute discovery call →
-            </Link>
-          </div>
-          <div>
-            <h2 className="h-section">What &ldquo;team building activities&rdquo; should actually mean</h2>
-            <div className="prose-site mt-5">
-              <p>
+            <div className="rounded-3xl border-2 border-navy-900/10 bg-white p-7 shadow-card">
+              <span className="icon-dot bg-sunrise-50">🎯</span>
+              <h2 className="mt-4 text-xl font-extrabold text-navy-900">
+                What &ldquo;team building&rdquo; should actually mean
+              </h2>
+              <p className="prose-site mt-3">
                 If your last team outing ended with everyone saying &ldquo;that
                 was fun&rdquo; and nothing changed on Monday morning, you
                 didn't run a team-building program. You ran a paid party.
               </p>
-              <p>
-                Real team-building activities are designed backwards. You don't
-                start with &ldquo;what's a fun game we can play?&rdquo; You
-                start with &ldquo;what's actually broken in this team that we
-                need to surface and fix?&rdquo;
-              </p>
-              <p>
-                Maybe the team is avoiding healthy conflict. Maybe decisions
-                are being made by two or three voices while everyone else stays
-                quiet. Maybe new joiners aren't integrating. Maybe there's a
-                silent split between sub-teams that nobody is naming.
-              </p>
-              <p>
-                Each of these has a specific kind of activity that surfaces it.
-                And a specific kind of debrief that turns the experience into a
-                real shift back at work. The right program starts with a
-                conversation about your team. Not a brochure.
-              </p>
+              <ReadMore>
+                <p>
+                  Real team-building activities are designed backwards. You
+                  don't start with &ldquo;what's a fun game we can play?&rdquo;
+                  You start with &ldquo;what's actually broken in this team
+                  that we need to surface and fix?&rdquo;
+                </p>
+                <p>
+                  Maybe the team is avoiding healthy conflict. Maybe decisions
+                  are being made by two or three voices while everyone else
+                  stays quiet. Maybe new joiners aren't integrating. Maybe
+                  there's a silent split between sub-teams that nobody is
+                  naming.
+                </p>
+                <p>
+                  Each of these has a specific kind of activity that surfaces
+                  it. And a specific kind of debrief that turns the experience
+                  into a real shift back at work. The right program starts with
+                  a conversation about your team. Not a brochure.
+                </p>
+              </ReadMore>
+              <Link href="/contact-us" className="btn-secondary mt-5">
+                Get a free custom program design →
+              </Link>
             </div>
-            <Link href="/contact-us" className="btn-secondary mt-6">
-              Get a free custom program design →
-            </Link>
           </div>
         </div>
       </section>
+      <Wave fill="#f8f7fa" flip />
 
       {/* Formats */}
       <section className="container-site mt-16">
@@ -289,7 +329,7 @@ export default function HomePage() {
               <h3 className="text-lg font-extrabold text-navy-900 group-hover:text-electric-600">
                 {f.title}
               </h3>
-              <p className="mt-3 text-sm leading-7 text-navy-800/85">{f.body}</p>
+              <p className="mt-3 line-clamp-3 text-sm leading-7 text-navy-800/85">{f.body}</p>
               <span className="section-link mt-4 inline-block">Explore →</span>
             </Link>
           ))}
@@ -359,7 +399,8 @@ export default function HomePage() {
       </section>
 
       {/* Who this is for */}
-      <section className="mt-16 bg-mist py-14">
+      <Wave fill="#fff7ec" className="mt-16" />
+      <section className="band-warm pb-14 pt-4">
         <div className="container-site">
           <h2 className="h-section">Who this microsite is for</h2>
           <p className="mt-2 text-sm text-navy-800/70">You're probably one of these people.</p>
@@ -380,6 +421,7 @@ export default function HomePage() {
           </Link>
         </div>
       </section>
+      <Wave fill="#fff7ec" flip />
 
       {/* Why us + process */}
       <section className="container-site mt-16 grid gap-10 lg:grid-cols-2">
@@ -387,19 +429,21 @@ export default function HomePage() {
           <h2 className="h-section">Why teams choose us over generic event agencies</h2>
           <div className="prose-site mt-5">
             <p>
-              Experience and design quality compound over time. We've spent 13+
-              years doing this work. Hundreds of corporate programs delivered
-              across IT/ITES, BFSI, manufacturing, and consulting. On-ground
-              delivery in 27+ Indian cities. Group sizes from 10 to 1,500+,
-              with end-to-end logistics included.
-            </p>
-            <p>
               We use a facilitator-first model; every program is led by a
               trained facilitator, not an event coordinator. And our rebook
               rate sits at 87% within 12 months, because the work creates
               outcomes clients want to repeat.
             </p>
           </div>
+          <ReadMore>
+            <p>
+              Experience and design quality compound over time. We've spent 13+
+              years doing this work. Hundreds of corporate programs delivered
+              across IT/ITES, BFSI, manufacturing, and consulting. On-ground
+              delivery in 27+ Indian cities. Group sizes from 10 to 1,500+,
+              with end-to-end logistics included.
+            </p>
+          </ReadMore>
         </div>
         <div>
           <h2 className="h-section">What happens when you reach out</h2>
