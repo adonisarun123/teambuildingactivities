@@ -8,6 +8,7 @@ import { CTASection } from "@/components/CTASection";
 import { FAQ, faqJsonLd } from "@/components/FAQ";
 import { ReadMore } from "@/components/ReadMore";
 import { Wave } from "@/components/Wave";
+import { heroImages } from "@/data/images";
 import { site } from "@/config/site";
 
 export const metadata: Metadata = {
@@ -135,59 +136,72 @@ export default function HomePage() {
 
   return (
     <>
-      {/* Hero — light, playful, product-first */}
+      {/* Hero — photo collage, Airbnb-style */}
       <section className="relative overflow-hidden bg-gradient-to-b from-electric-50 to-white">
         <div className="pointer-events-none absolute -left-20 top-10 h-64 w-64 rounded-full bg-sunrise-100 blur-3xl" aria-hidden />
-        <div className="pointer-events-none absolute -right-16 bottom-0 h-72 w-72 rounded-full bg-electric-100 blur-3xl" aria-hidden />
-        <div className="pointer-events-none absolute right-8 top-16 hidden select-none gap-3 lg:flex" aria-hidden>
-          {["🥁", "🗺️", "🛶", "🎭"].map((e, i) => (
-            <span
-              key={e}
-              className={`grid h-16 w-16 place-items-center rounded-3xl bg-white text-3xl shadow-lift ${i % 2 ? "translate-y-6 rotate-6" : "-rotate-6"}`}
-            >
-              {e}
-            </span>
-          ))}
-        </div>
-        <div className="container-site relative py-14 sm:py-20">
-          <p className="eyebrow">🎯 Facilitator-led team building</p>
-          <h1 className="mt-5 max-w-3xl text-4xl font-extrabold leading-[1.1] tracking-tight text-navy-900 sm:text-6xl">
-            Team building that{" "}
-            <span className="relative inline-block text-electric-600">
-              actually works
-              <svg viewBox="0 0 200 12" className="absolute -bottom-1 left-0 w-full" aria-hidden>
-                <path d="M2 9 Q100 -4 198 8" stroke="#f97d09" strokeWidth="5" fill="none" strokeLinecap="round" />
-              </svg>
-            </span>{" "}
-            on Monday morning
-          </h1>
-          <p className="mt-5 max-w-xl text-lg leading-8 text-navy-800">
-            Structured experiences, trained facilitators, and the debrief most
-            vendors skip — across 27+ Indian cities.
-          </p>
-          <div className="mt-7 flex flex-wrap gap-3">
-            <Link href="/contact-us" className="btn-primary !px-7 !py-3.5 !text-base">
-              Book a free discovery call →
-            </Link>
-            <Link href="/team-building-activities" className="btn-secondary !px-7 !py-3.5 !text-base">
-              Explore activities
-            </Link>
+        <div className="container-site relative grid items-center gap-10 py-14 sm:py-16 lg:grid-cols-[1fr_420px]">
+          <div>
+            <p className="eyebrow">🎯 Facilitator-led team building</p>
+            <h1 className="mt-5 max-w-3xl text-4xl font-extrabold leading-[1.08] tracking-tight text-navy-900 sm:text-[54px]">
+              Team building that{" "}
+              <span className="relative inline-block whitespace-nowrap text-electric-600">
+                actually works
+                <svg
+                  viewBox="0 0 200 10"
+                  preserveAspectRatio="none"
+                  className="absolute -bottom-2 left-0 h-2.5 w-full sm:-bottom-3"
+                  aria-hidden
+                >
+                  <path d="M2 8 Q100 0 198 7" stroke="#f97d09" strokeWidth="4" fill="none" strokeLinecap="round" />
+                </svg>
+              </span>{" "}
+              on Monday morning
+            </h1>
+            <p className="mt-6 max-w-xl text-lg leading-8 text-navy-800">
+              Structured experiences, trained facilitators, and the debrief
+              most vendors skip — across 27+ Indian cities.
+            </p>
+            <div className="mt-7 flex flex-wrap gap-3">
+              <Link href="/contact-us" className="btn-primary !px-7 !py-3.5 !text-base">
+                Book a free discovery call →
+              </Link>
+              <Link href="/team-building-activities" className="btn-secondary !px-7 !py-3.5 !text-base">
+                Explore activities
+              </Link>
+            </div>
+            <dl className="mt-10 flex flex-wrap gap-3">
+              {[
+                [site.stats.yearsExperience, "years"],
+                [site.stats.citiesCovered, "cities"],
+                [site.stats.groupSizes, "group sizes"],
+                [site.stats.rebookRate, "rebook rate"],
+              ].map(([stat, label]) => (
+                <div key={label} className="stat-pill">
+                  <dt className="order-2 text-xs font-bold uppercase tracking-wide text-navy-800/60">
+                    {label}
+                  </dt>
+                  <dd className="order-1 text-lg font-extrabold text-electric-600">{stat}</dd>
+                </div>
+              ))}
+            </dl>
           </div>
-          <dl className="mt-10 flex flex-wrap gap-3">
-            {[
-              [site.stats.yearsExperience, "years"],
-              [site.stats.citiesCovered, "cities"],
-              [site.stats.groupSizes, "group sizes"],
-              [site.stats.rebookRate, "rebook rate"],
-            ].map(([stat, label]) => (
-              <div key={label} className="stat-pill">
-                <dt className="order-2 text-xs font-bold uppercase tracking-wide text-navy-800/60">
-                  {label}
-                </dt>
-                <dd className="order-1 text-lg font-extrabold text-electric-600">{stat}</dd>
+          {/* Photo collage */}
+          <div className="hidden grid-cols-2 gap-3 lg:grid" aria-hidden>
+            {heroImages.map((img, i) => (
+              <div
+                key={img.src}
+                className={`overflow-hidden rounded-3xl shadow-lift ${i % 2 ? "translate-y-5" : ""} ${i === 0 ? "rotate-[-2deg]" : ""} ${i === 3 ? "rotate-[2deg]" : ""}`}
+              >
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={img.src}
+                  alt={img.alt}
+                  loading="eager"
+                  className="aspect-[4/5] w-full object-cover"
+                />
               </div>
             ))}
-          </dl>
+          </div>
         </div>
       </section>
 
@@ -384,15 +398,18 @@ export default function HomePage() {
         </div>
         <div className="mt-6 grid grid-cols-2 gap-4 sm:grid-cols-4">
           {cityPages.map((c) => (
-            <Link key={c.slug} href={`/${c.slug}`} className="card group overflow-hidden">
-              <ActivityMedia
-                activity={{ slug: c.slug, title: c.city, format: "Outdoor" }}
-                className="h-20 w-full"
-                emojiClassName="text-3xl"
-              />
-              <p className="p-4 text-sm font-extrabold text-navy-900 group-hover:text-electric-600">
+            <Link key={c.slug} href={`/${c.slug}`} className="group">
+              <div className="overflow-hidden rounded-2xl shadow-card transition group-hover:shadow-lift">
+                <ActivityMedia
+                  activity={{ slug: c.slug, title: c.city, format: "Outdoor" }}
+                  className="aspect-square w-full"
+                  emojiClassName="text-3xl"
+                />
+              </div>
+              <p className="pt-2.5 text-sm font-bold text-navy-900 group-hover:text-electric-600">
                 {c.city}
               </p>
+              <p className="text-xs text-navy-800/60">Team building & offsites</p>
             </Link>
           ))}
         </div>

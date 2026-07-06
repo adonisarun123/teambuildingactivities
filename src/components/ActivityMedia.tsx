@@ -1,8 +1,13 @@
-import type { Activity } from "@/data/activities";
+"use client";
 
-// Visual cover for activity cards and banners.
-// Stands in for photography until real event photos are available — drop an
-// <Image> into this component later and every card upgrades at once.
+import { useState } from "react";
+import type { Activity } from "@/data/activities";
+import { getActivityImage } from "@/data/images";
+
+// Visual cover for activity cards, city tiles and banners.
+// Renders an Unsplash photo when one is mapped in src/data/images.ts and
+// falls back to a branded gradient + icon if the image fails to load.
+// Swap in real event photography via images.ts — every card upgrades at once.
 
 const emojiMap: Record<string, string> = {
   "corporate-treasure-hunt": "🗺️",
@@ -60,21 +65,40 @@ export function ActivityMedia({
   className?: string;
   emojiClassName?: string;
 }) {
+  const [imageFailed, setImageFailed] = useState(false);
+  const src = getActivityImage(activity.slug);
   const gradient = gradients[hash(activity.slug) % gradients.length];
   const emoji = emojiMap[activity.slug] ?? "🎪";
+  const showImage = src && !imageFailed;
+
   return (
     <div
       className={`relative overflow-hidden bg-gradient-to-br ${gradient} ${className}`}
-      aria-hidden
     >
-      {/* soft texture */}
-      <div className="absolute inset-0 opacity-20 [background-image:radial-gradient(circle_at_20%_20%,white_0,transparent_45%),radial-gradient(circle_at_80%_75%,white_0,transparent_40%)]" />
-      <div className="absolute -bottom-6 -right-4 select-none text-[110px] leading-none opacity-25 blur-[1px]">
-        {emoji}
-      </div>
-      <div className={`relative flex h-full items-center justify-center select-none drop-shadow ${emojiClassName}`}>
-        {emoji}
-      </div>
+      {!showImage && (
+        <>
+          <div
+            className="absolute inset-0 opacity-20 [background-image:radial-gradient(circle_at_20%_20%,white_0,transparent_45%),radial-gradient(circle_at_80%_75%,white_0,transparent_40%)]"
+            aria-hidden
+          />
+          <div
+            className={`relative flex h-full items-center justify-center select-none drop-shadow ${emojiClassName}`}
+            aria-hidden
+          >
+            {emoji}
+          </div>
+        </>
+      )}
+      {showImage && (
+        // eslint-disable-next-line @next/next/no-img-element
+        <img
+          src={src}
+          alt={activity.title}
+          loading="lazy"
+          onError={() => setImageFailed(true)}
+          className="absolute inset-0 h-full w-full object-cover transition duration-300 group-hover:scale-105"
+        />
+      )}
     </div>
   );
 }

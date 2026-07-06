@@ -21,23 +21,27 @@ export function Header() {
           </span>
         </Link>
 
-        {/* Search */}
+        {/* Search — Airbnb-style pill */}
         <form
           action="/team-building-activities"
           method="GET"
-          className="relative hidden flex-1 md:block md:max-w-md"
+          className="relative hidden flex-1 md:mx-auto md:block md:max-w-sm"
           role="search"
         >
-          <span className="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-navy-800/50" aria-hidden>
-            🔍
-          </span>
           <input
             type="search"
             name="q"
             placeholder="Search activities, formats, goals…"
             aria-label="Search activities"
-            className="w-full rounded-xl border border-navy-900/10 bg-mist py-2.5 pl-11 pr-4 text-sm font-medium text-navy-900 placeholder-navy-800/50 transition focus:border-electric-500 focus:bg-white focus:outline-none"
+            className="w-full rounded-full border border-navy-900/10 bg-white py-2.5 pl-5 pr-12 text-sm font-medium text-navy-900 placeholder-navy-800/50 shadow-card transition focus:border-electric-500 focus:shadow-lift focus:outline-none"
           />
+          <button
+            type="submit"
+            aria-label="Search"
+            className="absolute right-1.5 top-1/2 grid h-8 w-8 -translate-y-1/2 place-items-center rounded-full bg-electric-600 text-sm text-white transition hover:bg-electric-700"
+          >
+            🔍
+          </button>
         </form>
 
         <nav className="ml-auto hidden items-center gap-6 md:flex" aria-label="Main">
@@ -64,15 +68,22 @@ export function Header() {
         </div>
       </div>
       {/* Mobile search */}
-      <div className="border-t border-navy-900/5 px-4 py-2 md:hidden">
-        <form action="/team-building-activities" method="GET" role="search">
+      <div className="px-4 pb-3 md:hidden">
+        <form action="/team-building-activities" method="GET" role="search" className="relative">
           <input
             type="search"
             name="q"
             placeholder="Search activities…"
             aria-label="Search activities"
-            className="w-full rounded-xl border border-navy-900/10 bg-mist px-4 py-2 text-sm font-medium text-navy-900 placeholder-navy-800/50 focus:border-electric-500 focus:bg-white focus:outline-none"
+            className="w-full rounded-full border border-navy-900/10 bg-white py-2.5 pl-5 pr-12 text-sm font-medium text-navy-900 placeholder-navy-800/50 shadow-card focus:border-electric-500 focus:outline-none"
           />
+          <button
+            type="submit"
+            aria-label="Search"
+            className="absolute right-1.5 top-1/2 grid h-8 w-8 -translate-y-1/2 place-items-center rounded-full bg-electric-600 text-sm text-white"
+          >
+            🔍
+          </button>
         </form>
       </div>
     </header>
