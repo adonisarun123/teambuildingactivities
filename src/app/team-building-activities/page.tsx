@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Suspense } from "react";
 import { activities } from "@/data/activities";
 import { ActivityExplorer } from "@/components/ActivityExplorer";
 import { CTASection } from "@/components/CTASection";
@@ -37,7 +38,7 @@ const faqs = [
 export default function ActivitiesPage() {
   return (
     <>
-      <section className="bg-gradient-to-b from-mist to-white">
+      <section className="border-b border-navy-900/5 bg-gradient-to-b from-electric-50/60 to-white">
         <div className="container-site py-14">
           <h1 className="text-3xl font-extrabold tracking-tight text-navy-900 sm:text-4xl">
             All Team Building Activities
@@ -53,7 +54,9 @@ export default function ActivitiesPage() {
         </div>
       </section>
       <section className="container-site mt-4">
-        <ActivityExplorer activities={activities} />
+        <Suspense fallback={null}>
+          <ActivityExplorer activities={activities} />
+        </Suspense>
       </section>
       <FAQ items={faqs} />
       <CTASection />

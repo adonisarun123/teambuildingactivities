@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { activities } from "@/data/activities";
 import { cityPages } from "@/data/city-pages";
 import { ActivityCard } from "@/components/ActivityCard";
+import { ActivityMedia } from "@/components/ActivityMedia";
 import { CTASection } from "@/components/CTASection";
 import { FAQ, faqJsonLd } from "@/components/FAQ";
 import { site } from "@/config/site";
@@ -13,6 +14,17 @@ export const metadata: Metadata = {
     "Corporate team building activities designed by experiential learning experts. Outdoor, indoor, virtual & offsite programs delivered across 27+ Indian cities.",
   alternates: { canonical: "/" },
 };
+
+const categoryTiles = [
+  { slug: "outdoor-team-building-activities", label: "Outdoor", emoji: "🏕️", desc: "Full-day formats under open sky" },
+  { slug: "indoor-team-building-activities", label: "Indoor", emoji: "🏢", desc: "Office, hall & ballroom formats" },
+  { slug: "virtual-team-building-activities", label: "Virtual", emoji: "💻", desc: "For distributed & hybrid teams" },
+  { slug: "corporate-team-outing-activities", label: "Off-sites & outings", emoji: "🌄", desc: "Resort days & overnight programs" },
+  { slug: "leadership-team-building-activities", label: "Leadership", emoji: "🧭", desc: "Programs with real methodology" },
+  { slug: "fun-team-building-activities", label: "Fun & energisers", emoji: "🎉", desc: "Laughter-first, zero cringe" },
+  { slug: "problem-solving-team-building-activities", label: "Problem solving", emoji: "🧩", desc: "For analytical teams" },
+  { slug: "employee-engagement-activities", label: "Engagement", emoji: "⚡", desc: "Year-round calendars" },
+];
 
 const formats = [
   {
@@ -40,18 +52,22 @@ const formats = [
 const personas = [
   {
     who: "An HR manager",
+    emoji: "📋",
     what: "planning a quarterly engagement event for 80–200 people. Under pressure to show that engagement spend actually moved a metric.",
   },
   {
     who: "An L&D head",
+    emoji: "🎓",
     what: "designing a leadership program. You need real methodology, real measurement, real outcomes — not games with corporate branding.",
   },
   {
     who: "An admin manager or EA",
+    emoji: "🗂️",
     what: "who just got asked to “organise something for the team.” You want it done well, on time, on budget, without 50 follow-up emails.",
   },
   {
     who: "A founder",
+    emoji: "🚀",
     what: "of a 30-person startup that hasn't done anything together in a year. You want the next time the team is in a room together to actually mean something.",
   },
 ];
@@ -92,6 +108,8 @@ export default function HomePage() {
     "drum-circle",
     "virtual-murder-mystery",
     "corporate-masterchef-cookoff",
+    "box-cricket-league",
+    "movie-making-challenge",
   ]
     .map((slug) => activities.find((a) => a.slug === slug)!)
     .filter(Boolean);
@@ -115,141 +133,184 @@ export default function HomePage() {
 
   return (
     <>
-      {/* Hero */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-navy-950 via-navy-900 to-electric-700 text-white">
-        <div className="pointer-events-none absolute -right-24 -top-24 h-96 w-96 rounded-full bg-electric-500/20 blur-3xl" />
-        <div className="pointer-events-none absolute -bottom-32 left-1/4 h-80 w-80 rounded-full bg-sunrise-500/20 blur-3xl" />
-        <div className="container-site relative py-20 sm:py-28">
-          <h1 className="max-w-3xl text-4xl font-extrabold leading-tight tracking-tight sm:text-5xl">
+      {/* Hero — light, product-first */}
+      <section className="border-b border-navy-900/5 bg-gradient-to-b from-electric-50/60 to-white">
+        <div className="container-site py-12 sm:py-16">
+          <p className="tag">Facilitator-led · 27+ Indian cities · 13+ years</p>
+          <h1 className="mt-4 max-w-3xl text-3xl font-extrabold leading-tight tracking-tight text-navy-900 sm:text-5xl">
             What If Your Next Team Building Activity{" "}
-            <span className="bg-gradient-to-r from-electric-400 to-sunrise-400 bg-clip-text text-transparent">
-              Actually Changed How Your Team Works?
-            </span>
+            <span className="text-electric-600">Actually Changed How Your Team Works?</span>
           </h1>
-          <div className="mt-6 max-w-2xl space-y-4 text-lg leading-8 text-white/80">
-            <p>
-              You're here because someone said, &ldquo;Let's do something for
-              the team.&rdquo; Your manager. Your CHRO. Your founder. You opened
-              a tab, typed &ldquo;team building activities,&rdquo; and landed on
-              a page that looks like every other one. A grid of treasure hunts.
-              Photos of people in matching t-shirts laughing too hard. A contact
-              form.
-            </p>
-            <p>Let's skip that part.</p>
-            <p>
-              In hundreds of corporate programs across 27+ Indian cities over
-              the last 13 years, we've watched one thing consistently move the
-              needle on team performance. And it's never the activity itself.
-              It's the <strong className="text-white">debrief</strong> — the 20
-              minutes after the activity ends, when a trained facilitator walks
-              the team through what just happened. Why one person took charge
-              and then disappeared. Why the loudest voice wasn't the most useful
-              one. Why two sub-teams compete instead of sharing information.
-            </p>
-            <p>
-              That's the part most team-building companies skip. That's where we
-              focus.
-            </p>
-          </div>
-          <div className="mt-8 flex flex-wrap gap-3">
-            <Link href="/contact-us" className="btn-accent">
+          <p className="mt-4 max-w-2xl text-base leading-7 text-navy-800 sm:text-lg sm:leading-8">
+            Structured experiences with a clear learning goal, run by trained
+            facilitators, and closed with the debrief most vendors skip —
+            because that's where behaviour actually changes.
+          </p>
+          <div className="mt-7 flex flex-wrap gap-3">
+            <Link href="/contact-us" className="btn-primary !px-7 !py-3.5">
               Book a free 20-minute discovery call →
             </Link>
-            <Link href="/team-building-activities" className="btn-secondary !border-white/30 !bg-transparent !text-white hover:!border-white">
+            <Link href="/team-building-activities" className="btn-secondary !px-7 !py-3.5">
               Explore activities
             </Link>
           </div>
-          <dl className="mt-12 grid max-w-2xl grid-cols-2 gap-6 text-center sm:grid-cols-4">
+          <dl className="mt-10 flex flex-wrap gap-x-10 gap-y-4">
             {[
-              [site.stats.yearsExperience, "Years of programs"],
+              [site.stats.yearsExperience, "years of programs"],
               [site.stats.citiesCovered, "Indian cities"],
-              [site.stats.groupSizes, "Group sizes"],
-              [site.stats.rebookRate, "Rebook rate in 12 months"],
+              [site.stats.groupSizes, "group sizes"],
+              [site.stats.rebookRate, "rebook rate in 12 months"],
             ].map(([stat, label]) => (
-              <div key={label}>
-                <dt className="text-2xl font-extrabold text-white">{stat}</dt>
-                <dd className="mt-1 text-xs text-white/60">{label}</dd>
+              <div key={label} className="flex items-baseline gap-2">
+                <dt className="text-xl font-extrabold text-navy-900 sm:text-2xl">{stat}</dt>
+                <dd className="text-sm text-navy-800/70">{label}</dd>
               </div>
             ))}
           </dl>
         </div>
       </section>
 
-      {/* What team building should mean */}
-      <section className="container-site mt-16">
-        <h2 className="h-section">
-          What &ldquo;team building activities&rdquo; should actually mean
-        </h2>
-        <div className="prose-site mt-5 max-w-3xl">
-          <p>
-            If your last team outing ended with everyone saying &ldquo;that was
-            fun&rdquo; and nothing changed on Monday morning, you didn't run a
-            team-building program. You ran a paid party.
-          </p>
-          <p>
-            Real team-building activities are designed backwards. You don't
-            start with &ldquo;what's a fun game we can play?&rdquo; You start
-            with &ldquo;what's actually broken in this team that we need to
-            surface and fix?&rdquo;
-          </p>
-          <p>
-            Maybe the team is avoiding healthy conflict. Maybe decisions are
-            being made by two or three voices while everyone else stays quiet.
-            Maybe new joiners aren't integrating. Maybe there's a silent split
-            between sub-teams that nobody is naming.
-          </p>
-          <p>
-            Each of these has a specific kind of activity that surfaces it. And
-            a specific kind of debrief that turns the experience into a real
-            shift back at work. A trust walk and a strategic simulation are not
-            interchangeable, even though both show up under &ldquo;team
-            building activities&rdquo; on Google.
-          </p>
-          <p>
-            The right program starts with a conversation about your team. Not a
-            brochure.
-          </p>
+      {/* Category tiles */}
+      <section className="container-site mt-12">
+        <div className="flex items-end justify-between gap-4">
+          <h2 className="h-section">Browse by category</h2>
+          <Link href="/team-building-activities" className="section-link hidden sm:block">
+            See all →
+          </Link>
         </div>
-        <Link href="/contact-us" className="btn-primary mt-6">
-          Get a free custom program design →
-        </Link>
+        <div className="mt-5 grid grid-cols-2 gap-4 md:grid-cols-4">
+          {categoryTiles.map((c) => (
+            <Link key={c.slug} href={`/${c.slug}`} className="card group flex items-start gap-3 p-4">
+              <span className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-electric-50 text-xl">
+                {c.emoji}
+              </span>
+              <span>
+                <span className="block text-sm font-extrabold text-navy-900 group-hover:text-electric-600">
+                  {c.label}
+                </span>
+                <span className="mt-0.5 block text-xs leading-5 text-navy-800/70">{c.desc}</span>
+              </span>
+            </Link>
+          ))}
+        </div>
+      </section>
+
+      {/* Top activities */}
+      <section className="container-site mt-14">
+        <div className="flex items-end justify-between gap-4">
+          <div>
+            <h2 className="h-section">Top team building activities</h2>
+            <p className="mt-1 text-sm text-navy-800/70">
+              The formats Indian teams book most — proven, scalable, loved.
+            </p>
+          </div>
+          <Link href="/team-building-activities" className="section-link hidden sm:block">
+            See all {activities.length} →
+          </Link>
+        </div>
+        <div className="mt-6 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+          {featured.map((a) => (
+            <ActivityCard key={a.slug} activity={a} />
+          ))}
+        </div>
+      </section>
+
+      {/* Editorial: why every site looks the same */}
+      <section className="mt-16 bg-mist py-14">
+        <div className="container-site grid gap-10 lg:grid-cols-2">
+          <div>
+            <h2 className="h-section">Why every team-building website looks exactly the same</h2>
+            <div className="prose-site mt-5">
+              <p>
+                You're here because someone said, &ldquo;Let's do something for
+                the team.&rdquo; Your manager. Your CHRO. Your founder. You
+                opened a tab, typed &ldquo;team building activities,&rdquo; and
+                landed on a page that looks like every other one. A grid of
+                treasure hunts. Photos of people in matching t-shirts laughing
+                too hard. A contact form.
+              </p>
+              <p>Let's skip that part.</p>
+              <p>
+                In hundreds of corporate programs across 27+ Indian cities over
+                the last 13 years, we've watched one thing consistently move
+                the needle on team performance. And it's never the activity
+                itself. It's the <strong>debrief</strong> — the 20 minutes
+                after the activity ends, when a trained facilitator walks the
+                team through what just happened. Why one person took charge and
+                then disappeared. Why the loudest voice wasn't the most useful
+                one. Why two sub-teams compete instead of sharing information.
+              </p>
+              <p>That's the part most team-building companies skip. That's where we focus.</p>
+            </div>
+            <Link href="/contact-us" className="btn-primary mt-6">
+              Book a free 20-minute discovery call →
+            </Link>
+          </div>
+          <div>
+            <h2 className="h-section">What &ldquo;team building activities&rdquo; should actually mean</h2>
+            <div className="prose-site mt-5">
+              <p>
+                If your last team outing ended with everyone saying &ldquo;that
+                was fun&rdquo; and nothing changed on Monday morning, you
+                didn't run a team-building program. You ran a paid party.
+              </p>
+              <p>
+                Real team-building activities are designed backwards. You don't
+                start with &ldquo;what's a fun game we can play?&rdquo; You
+                start with &ldquo;what's actually broken in this team that we
+                need to surface and fix?&rdquo;
+              </p>
+              <p>
+                Maybe the team is avoiding healthy conflict. Maybe decisions
+                are being made by two or three voices while everyone else stays
+                quiet. Maybe new joiners aren't integrating. Maybe there's a
+                silent split between sub-teams that nobody is naming.
+              </p>
+              <p>
+                Each of these has a specific kind of activity that surfaces it.
+                And a specific kind of debrief that turns the experience into a
+                real shift back at work. The right program starts with a
+                conversation about your team. Not a brochure.
+              </p>
+            </div>
+            <Link href="/contact-us" className="btn-secondary mt-6">
+              Get a free custom program design →
+            </Link>
+          </div>
+        </div>
       </section>
 
       {/* Formats */}
-      <section className="mt-16 bg-mist py-16">
-        <div className="container-site">
-          <h2 className="h-section">The right format for your team's actual needs</h2>
-          <div className="mt-8 grid gap-5 md:grid-cols-2">
-            {formats.map((f) => (
-              <Link key={f.slug} href={`/${f.slug}`} className="card group p-6">
-                <h3 className="text-lg font-bold text-navy-900 group-hover:text-electric-600">
-                  {f.title}
-                </h3>
-                <p className="mt-3 text-sm leading-7 text-navy-800/80">{f.body}</p>
-                <span className="mt-4 inline-block text-sm font-semibold text-electric-600">
-                  Explore →
-                </span>
-              </Link>
-            ))}
-          </div>
-          <p className="mt-6 text-sm text-navy-800/70">
-            Want to dig deeper first? Browse{" "}
-            <Link href="/services" className="font-semibold text-electric-600 hover:underline">
-              our full services
-            </Link>{" "}
-            or{" "}
-            <Link href="/blog" className="font-semibold text-electric-600 hover:underline">
-              the blog
+      <section className="container-site mt-16">
+        <h2 className="h-section">The right format for your team's actual needs</h2>
+        <div className="mt-6 grid gap-5 md:grid-cols-2">
+          {formats.map((f) => (
+            <Link key={f.slug} href={`/${f.slug}`} className="card group p-6">
+              <h3 className="text-lg font-extrabold text-navy-900 group-hover:text-electric-600">
+                {f.title}
+              </h3>
+              <p className="mt-3 text-sm leading-7 text-navy-800/85">{f.body}</p>
+              <span className="section-link mt-4 inline-block">Explore →</span>
             </Link>
-            .
-          </p>
+          ))}
         </div>
+        <p className="mt-6 text-sm text-navy-800/70">
+          Want to dig deeper first? Browse{" "}
+          <Link href="/services" className="font-bold text-electric-600 hover:underline">
+            our full services
+          </Link>{" "}
+          or{" "}
+          <Link href="/blog" className="font-bold text-electric-600 hover:underline">
+            the blog
+          </Link>
+          .
+        </p>
       </section>
 
       {/* What separates great from forgettable */}
       <section className="container-site mt-16">
         <h2 className="h-section">What separates a great program from a forgettable one</h2>
-        <p className="mt-3 text-sm text-navy-800/70">Three things — in this order.</p>
+        <p className="mt-2 text-sm text-navy-800/70">Three things — in this order.</p>
         <div className="mt-6 grid gap-5 md:grid-cols-3">
           {[
             {
@@ -265,117 +326,105 @@ export default function HomePage() {
               d: "The activity is just the setup. The structured reflection that follows — the questions, the patterns named, the connections drawn to how the team works back at the office — that's where behavioural change happens. If the agenda doesn't include 20–30 minutes of debrief after each activity, you're paying for entertainment.",
             },
           ].map((item, i) => (
-            <div key={item.t} className="relative rounded-2xl border border-navy-900/5 bg-white p-6 shadow-card">
-              <span className="absolute -top-3 left-6 grid h-8 w-8 place-items-center rounded-full bg-electric-600 text-sm font-bold text-white">
+            <div key={item.t} className="relative rounded-2xl border border-navy-900/10 bg-white p-6 shadow-card">
+              <span className="absolute -top-3 left-6 grid h-8 w-8 place-items-center rounded-full bg-electric-600 text-sm font-extrabold text-white">
                 {i + 1}
               </span>
-              <h3 className="mt-2 font-bold text-navy-900">{item.t}</h3>
-              <p className="mt-2 text-sm leading-6 text-navy-800/75">{item.d}</p>
+              <h3 className="mt-2 font-extrabold text-navy-900">{item.t}</h3>
+              <p className="mt-2 text-sm leading-6 text-navy-800/85">{item.d}</p>
             </div>
           ))}
         </div>
       </section>
 
-      {/* Featured activities */}
-      <section className="container-site mt-16">
-        <div className="flex items-end justify-between gap-4">
-          <h2 className="h-section">A few formats from our library</h2>
-          <Link href="/team-building-activities" className="hidden text-sm font-semibold text-electric-600 sm:block">
-            See all activities →
-          </Link>
-        </div>
-        <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          {featured.map((a) => (
-            <ActivityCard key={a.slug} activity={a} />
-          ))}
-        </div>
-      </section>
-
-      {/* Who this is for */}
-      <section className="mt-16 bg-mist py-16">
-        <div className="container-site">
-          <h2 className="h-section">Who this microsite is for</h2>
-          <p className="mt-3 text-sm text-navy-800/70">You're probably one of these people.</p>
-          <div className="mt-6 grid gap-5 sm:grid-cols-2">
-            {personas.map((p) => (
-              <div key={p.who} className="rounded-2xl border border-navy-900/5 bg-white p-6 shadow-card">
-                <h3 className="font-bold text-navy-900">{p.who}</h3>
-                <p className="mt-2 text-sm leading-6 text-navy-800/75">{p.what}</p>
-              </div>
-            ))}
-          </div>
-          <p className="mt-6 text-sm text-navy-800/80">
-            If any of these sound like you, you're in the right place.
-          </p>
-          <Link href="/contact-us" className="btn-primary mt-5">
-            Start your free scoping call today →
-          </Link>
-        </div>
-      </section>
-
-      {/* Why us */}
-      <section className="container-site mt-16">
-        <h2 className="h-section">Why teams choose us over generic event agencies</h2>
-        <div className="prose-site mt-5 max-w-3xl">
-          <p>
-            Experience and design quality compound over time. We've spent 13+
-            years doing this work. Hundreds of corporate programs delivered
-            across IT/ITES, BFSI, manufacturing, and consulting. On-ground
-            delivery in 27+ Indian cities. Group sizes from 10 to 1,500+, with
-            end-to-end logistics included.
-          </p>
-          <p>
-            We use a facilitator-first model; every program is led by a trained
-            facilitator, not an event coordinator. And our rebook rate sits at
-            87% within 12 months, because the work creates outcomes clients
-            want to repeat.
-          </p>
-        </div>
-      </section>
-
       {/* Cities */}
       <section className="container-site mt-16">
-        <h2 className="h-section">Team building in your city</h2>
+        <div className="flex items-end justify-between gap-4">
+          <h2 className="h-section">Team building in your city</h2>
+        </div>
         <div className="mt-6 grid grid-cols-2 gap-4 sm:grid-cols-4">
           {cityPages.map((c) => (
-            <Link key={c.slug} href={`/${c.slug}`} className="card p-5 text-center">
-              <span className="font-semibold text-navy-900">{c.city}</span>
+            <Link key={c.slug} href={`/${c.slug}`} className="card group overflow-hidden">
+              <ActivityMedia
+                activity={{ slug: c.slug, title: c.city, format: "Outdoor" }}
+                className="h-20 w-full"
+                emojiClassName="text-3xl"
+              />
+              <p className="p-4 text-sm font-extrabold text-navy-900 group-hover:text-electric-600">
+                {c.city}
+              </p>
             </Link>
           ))}
         </div>
       </section>
 
-      {/* Process */}
-      <section className="container-site mt-16">
-        <h2 className="h-section">What happens when you reach out</h2>
-        <ol className="mt-6 grid gap-5 md:grid-cols-3">
-          {[
-            [
-              "A real person replies within 4 working hours",
-              "Not a chatbot. Not a templated auto-response.",
-            ],
-            [
-              "A 20-minute scoping call",
-              "We ask about your team. We don't pitch.",
-            ],
-            [
-              "A custom proposal within 24 hours",
-              "Specific activities tied to your objectives. The name of the facilitator who'll lead your program.",
-            ],
-          ].map(([t, d], i) => (
-            <li key={t} className="relative rounded-2xl bg-mist p-6">
-              <span className="absolute -top-3 left-6 grid h-8 w-8 place-items-center rounded-full bg-electric-600 text-sm font-bold text-white">
-                {i + 1}
-              </span>
-              <h3 className="mt-2 font-bold text-navy-900">{t}</h3>
-              <p className="mt-2 text-sm leading-6 text-navy-800/75">{d}</p>
-            </li>
-          ))}
-        </ol>
-        <p className="mt-6 max-w-3xl text-sm leading-6 text-navy-800/80">
-          That's the process. No multi-week sales funnel. No drip emails. No
-          &ldquo;let me loop in my manager.&rdquo;
-        </p>
+      {/* Who this is for */}
+      <section className="mt-16 bg-mist py-14">
+        <div className="container-site">
+          <h2 className="h-section">Who this microsite is for</h2>
+          <p className="mt-2 text-sm text-navy-800/70">You're probably one of these people.</p>
+          <div className="mt-6 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+            {personas.map((p) => (
+              <div key={p.who} className="rounded-2xl border border-navy-900/10 bg-white p-6 shadow-card">
+                <span className="text-2xl">{p.emoji}</span>
+                <h3 className="mt-3 font-extrabold text-navy-900">{p.who}</h3>
+                <p className="mt-2 text-sm leading-6 text-navy-800/85">{p.what}</p>
+              </div>
+            ))}
+          </div>
+          <p className="mt-6 text-sm text-navy-800/85">
+            If any of these sound like you, you're in the right place.
+          </p>
+          <Link href="/contact-us" className="btn-primary mt-4">
+            Start your free scoping call today →
+          </Link>
+        </div>
+      </section>
+
+      {/* Why us + process */}
+      <section className="container-site mt-16 grid gap-10 lg:grid-cols-2">
+        <div>
+          <h2 className="h-section">Why teams choose us over generic event agencies</h2>
+          <div className="prose-site mt-5">
+            <p>
+              Experience and design quality compound over time. We've spent 13+
+              years doing this work. Hundreds of corporate programs delivered
+              across IT/ITES, BFSI, manufacturing, and consulting. On-ground
+              delivery in 27+ Indian cities. Group sizes from 10 to 1,500+,
+              with end-to-end logistics included.
+            </p>
+            <p>
+              We use a facilitator-first model; every program is led by a
+              trained facilitator, not an event coordinator. And our rebook
+              rate sits at 87% within 12 months, because the work creates
+              outcomes clients want to repeat.
+            </p>
+          </div>
+        </div>
+        <div>
+          <h2 className="h-section">What happens when you reach out</h2>
+          <ol className="mt-5 space-y-4">
+            {[
+              ["A real person replies within 4 working hours", "Not a chatbot. Not a templated auto-response."],
+              ["A 20-minute scoping call", "We ask about your team. We don't pitch."],
+              ["A custom proposal within 24 hours", "Specific activities tied to your objectives. The name of the facilitator who'll lead your program."],
+            ].map(([t, d], i) => (
+              <li key={t} className="flex gap-4">
+                <span className="grid h-8 w-8 shrink-0 place-items-center rounded-full bg-electric-600 text-sm font-extrabold text-white">
+                  {i + 1}
+                </span>
+                <span>
+                  <span className="block font-extrabold text-navy-900">{t}</span>
+                  <span className="mt-0.5 block text-sm leading-6 text-navy-800/85">{d}</span>
+                </span>
+              </li>
+            ))}
+          </ol>
+          <p className="mt-5 text-sm leading-6 text-navy-800/85">
+            That's the process. No multi-week sales funnel. No drip emails. No
+            &ldquo;let me loop in my manager.&rdquo;
+          </p>
+        </div>
       </section>
 
       <FAQ items={homeFaqs} />

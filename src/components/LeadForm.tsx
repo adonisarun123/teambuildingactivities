@@ -38,10 +38,10 @@ export function LeadForm() {
   }
 
   const inputClass =
-    "w-full rounded-lg border border-white/20 bg-white/10 px-4 py-2.5 text-sm text-white placeholder-white/50 focus:border-electric-400 focus:outline-none";
+    "w-full rounded-xl border border-white/25 bg-white/10 px-4 py-2.5 text-sm font-medium text-white placeholder-white/60 focus:border-white focus:bg-white/15 focus:outline-none";
 
   return (
-    <form onSubmit={handleSubmit} className="grid gap-3 rounded-2xl bg-white/5 p-6 backdrop-blur">
+    <form onSubmit={handleSubmit} className="grid gap-3 rounded-2xl bg-white/10 p-6 backdrop-blur">
       <div className="grid gap-3 sm:grid-cols-2">
         <input required placeholder="Your name" value={form.name} onChange={update("name")} className={inputClass} />
         <input placeholder="Company" value={form.company} onChange={update("company")} className={inputClass} />
@@ -76,9 +76,9 @@ export function LeadForm() {
         className={inputClass}
       />
       <button type="submit" className="btn-accent w-full">
-        Get my curated activity plan
+        Get my custom proposal
       </button>
-      <p className="text-center text-xs text-white/50">
+      <p className="text-center text-xs text-white/60">
         Sends your enquiry via WhatsApp — no spam, ever.
       </p>
     </form>

@@ -1,37 +1,43 @@
 import type { Config } from "tailwindcss";
 
+// Design language: product-first marketplace aesthetic — white surfaces,
+// violet accent, warm orange highlights, near-black ink text, soft shadows.
 const config: Config = {
   content: ["./src/**/*.{ts,tsx}"],
   theme: {
     extend: {
       colors: {
+        // Ink scale (text / dark surfaces) — keeps the `navy` token name so
+        // existing classes re-skin automatically.
         navy: {
-          950: "#0b1226",
-          900: "#101a36",
-          800: "#16234a",
-          700: "#1e2f63",
+          950: "#15151f",
+          900: "#1d1d29",
+          800: "#3c3c4e",
+          700: "#585870",
         },
+        // Accent scale (violet) — keeps the `electric` token name.
         electric: {
-          50: "#eef7ff",
-          100: "#d9edff",
-          400: "#38a4f8",
-          500: "#0e87ea",
-          600: "#026bc8",
-          700: "#0356a2",
+          50: "#f6f2ff",
+          100: "#ece3ff",
+          400: "#9b6bfa",
+          500: "#7b3ff2",
+          600: "#6929d4",
+          700: "#5721ad",
         },
+        // Warm highlight (ratings/energy) — keeps the `sunrise` token name.
         sunrise: {
-          50: "#fff8ed",
-          100: "#ffefd4",
+          50: "#fff7ec",
+          100: "#ffedd1",
           400: "#ffa733",
-          500: "#fd8a09",
-          600: "#e96d00",
+          500: "#f97d09",
+          600: "#e26400",
         },
-        mist: "#f6f8fc",
+        mist: "#f8f7fa",
       },
       fontFamily: {
         sans: [
+          "Manrope",
           "Plus Jakarta Sans",
-          "Inter",
           "ui-sans-serif",
           "system-ui",
           "-apple-system",
@@ -41,8 +47,9 @@ const config: Config = {
         ],
       },
       boxShadow: {
-        card: "0 1px 3px rgba(16,26,54,0.06), 0 8px 24px rgba(16,26,54,0.08)",
-        lift: "0 2px 6px rgba(16,26,54,0.08), 0 16px 40px rgba(16,26,54,0.14)",
+        card: "0 1px 2px rgba(21,21,31,0.05), 0 2px 8px rgba(21,21,31,0.06)",
+        lift: "0 4px 12px rgba(21,21,31,0.08), 0 12px 32px rgba(21,21,31,0.12)",
+        header: "0 1px 0 rgba(21,21,31,0.06)",
       },
       borderRadius: {
         xl2: "1.25rem",

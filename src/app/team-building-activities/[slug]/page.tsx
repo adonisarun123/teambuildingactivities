@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import { activities, getActivity, getRelatedActivities } from "@/data/activities";
 import { ActivityCard } from "@/components/ActivityCard";
+import { ActivityMedia } from "@/components/ActivityMedia";
 import { CTASection } from "@/components/CTASection";
 import { FAQ, faqJsonLd } from "@/components/FAQ";
 import { site } from "@/config/site";
@@ -76,24 +77,37 @@ export default function ActivityPage({ params }: Props) {
 
   return (
     <>
-      <section className="bg-gradient-to-b from-mist to-white">
-        <div className="container-site py-12">
-          <nav className="text-xs text-navy-800/60" aria-label="Breadcrumb">
+      <section>
+        <div className="container-site pt-6">
+          <nav className="text-xs font-semibold text-navy-800/60" aria-label="Breadcrumb">
             <Link href="/" className="hover:text-electric-600">Home</Link>
             {" / "}
             <Link href="/team-building-activities" className="hover:text-electric-600">Activities</Link>
             {" / "}
             <span className="text-navy-900">{activity.title}</span>
           </nav>
-          <div className="mt-5 flex flex-wrap gap-2">
-            <span className="tag">{activity.format}</span>
-            <span className="tag-warm">{activity.energyLevel} energy</span>
-            <span className="tag">{activity.difficulty}</span>
+          <div className="relative mt-4 overflow-hidden rounded-3xl">
+            <ActivityMedia
+              activity={activity}
+              className="h-56 w-full sm:h-72"
+              emojiClassName="text-7xl"
+            />
+            <div className="absolute left-4 top-4 flex flex-wrap gap-2 sm:left-6 sm:top-6">
+              <span className="rounded-md bg-white/95 px-2.5 py-1 text-xs font-bold uppercase tracking-wide text-navy-900 shadow-sm">
+                {activity.format}
+              </span>
+              <span className="rounded-md bg-navy-950/70 px-2.5 py-1 text-xs font-bold text-white backdrop-blur">
+                ⚡ {activity.energyLevel} energy
+              </span>
+              <span className="rounded-md bg-navy-950/70 px-2.5 py-1 text-xs font-bold text-white backdrop-blur">
+                {activity.difficulty}
+              </span>
+            </div>
           </div>
-          <h1 className="mt-4 text-3xl font-extrabold tracking-tight text-navy-900 sm:text-4xl">
+          <h1 className="mt-6 text-3xl font-extrabold tracking-tight text-navy-900 sm:text-4xl">
             {activity.title}
           </h1>
-          <p className="mt-4 max-w-3xl text-lg leading-8 text-navy-800/80">
+          <p className="mt-3 max-w-3xl text-lg leading-8 text-navy-800/85">
             {activity.shortDescription}
           </p>
           <div className="mt-6 flex flex-wrap gap-3">

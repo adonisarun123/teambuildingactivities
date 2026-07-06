@@ -32,7 +32,7 @@ export function generateMetadata({ params }: Props): Metadata {
 
 function Hero({ h1, intro }: { h1: string; intro: string[] }) {
   return (
-    <section className="bg-gradient-to-b from-mist to-white">
+    <section className="border-b border-navy-900/5 bg-gradient-to-b from-electric-50/60 to-white">
       <div className="container-site py-14">
         <h1 className="max-w-3xl text-3xl font-extrabold tracking-tight text-navy-900 sm:text-4xl">
           {h1}
