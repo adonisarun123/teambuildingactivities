@@ -1,10 +1,10 @@
-import type { CategoryPage } from "./landing-types";
+﻿import type { CategoryPage } from "./landing-types";
 
 export const categoryPages2: CategoryPage[] = [
   {
     slug: "communication-team-building-activities",
     h1: "Communication Team Building Activities",
-    metaTitle: "Communication Team Building Activities & Exercises | TeamBuildingActivities.in",
+    metaTitle: "Communication Team Building Activities & Exercises | TeamBuildingActivities.co.in",
     metaDescription:
       "Team building activities that measurably improve workplace communication — blindfold navigation, pipeline challenges, improv workshops. Facilitated, debriefed, practical.",
     matchCategory: "communication",
@@ -74,7 +74,7 @@ export const categoryPages2: CategoryPage[] = [
   {
     slug: "problem-solving-team-building-activities",
     h1: "Problem Solving Team Building Activities",
-    metaTitle: "Problem Solving Team Building Activities & Games | TeamBuildingActivities.in",
+    metaTitle: "Problem Solving Team Building Activities & Games | TeamBuildingActivities.co.in",
     metaDescription:
       "Team building activities that exercise real problem solving — escape rooms, chain reactions, tower builds, key punch. Watch how your team actually thinks under pressure.",
     matchCategory: "problem-solving",
@@ -145,7 +145,7 @@ export const categoryPages2: CategoryPage[] = [
   {
     slug: "employee-engagement-activities",
     h1: "Employee Engagement Activities",
-    metaTitle: "Employee Engagement Activities for Companies in India | TeamBuildingActivities.in",
+    metaTitle: "Employee Engagement Activities for Companies in India | TeamBuildingActivities.co.in",
     metaDescription:
       "Build a year-round employee engagement calendar — leagues, festivals, monthly formats and offsites that people actually attend. Planned end to end for Indian workplaces.",
     matchCategory: "employee-engagement",
@@ -215,7 +215,7 @@ export const categoryPages2: CategoryPage[] = [
   {
     slug: "corporate-team-outing-activities",
     h1: "Corporate Team Outing Activities",
-    metaTitle: "Corporate Team Outing Activities & Ideas in India | TeamBuildingActivities.in",
+    metaTitle: "Corporate Team Outing Activities & Ideas in India | TeamBuildingActivities.co.in",
     metaDescription:
       "Plan a corporate team outing that's more than lunch — resort days, adventure activities, treasure hunts and evening events, structured end to end. Get a curated outing plan.",
     matchCategory: "corporate-outing",
@@ -285,7 +285,7 @@ export const categoryPages2: CategoryPage[] = [
   {
     slug: "team-building-games-for-employees",
     h1: "Team Building Games for Employees",
-    metaTitle: "Team Building Games for Employees — Office & Offsite | TeamBuildingActivities.in",
+    metaTitle: "Team Building Games for Employees — Office & Offsite | TeamBuildingActivities.co.in",
     metaDescription:
       "The best team building games for employees — quick office games, offsite tournaments and virtual games, organised by time, group size and setting. Find your game.",
     matchCategory: "games",

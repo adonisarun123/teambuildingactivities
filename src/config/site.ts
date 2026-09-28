@@ -6,9 +6,9 @@
 // ---------------------------------------------------------------------------
 
 export const site = {
-  name: "TeamBuildingActivities.in",
+  name: "TeamBuildingActivities.co.in",
   shortName: "Team Building Activities",
-  url: "https://teambuildingactivities.in",
+  url: "https://teambuildingactivities.co.in",
   tagline: "Team Building Activities for Corporate Teams in India",
   description:
     "Corporate team building activities designed by experiential learning experts. Outdoor, indoor, virtual & offsite programs delivered across 27+ Indian cities.",
@@ -30,7 +30,7 @@ export const site = {
   whatsapp: "+91-XXXXXXXXXX",
   whatsappHref:
     "https://wa.me/91XXXXXXXXXX?text=Hi%2C%20I%27d%20like%20help%20planning%20a%20team%20building%20activity",
-  email: "hello@teambuildingactivities.in",
+  email: "hello@teambuildingactivities.co.in",
 
   cities: [
     "Bangalore",
