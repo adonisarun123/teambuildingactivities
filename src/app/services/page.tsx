@@ -256,6 +256,77 @@ const faqs = [
   },
 ];
 
+const serviceImages: Record<string, string> = {
+  outdoor: "https://images.unsplash.com/photo-1501555088652-021faa106b9b?auto=format&fit=crop&w=800&q=80",
+  indoor: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=800&q=80",
+  virtual: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=800&q=80",
+  offsites: "https://images.unsplash.com/photo-1511795409834-ef04bbd61622?auto=format&fit=crop&w=800&q=80",
+  leadership: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=800&q=80",
+  flagship: "https://images.unsplash.com/photo-1475721027785-f74eccf877e2?auto=format&fit=crop&w=800&q=80",
+  wellness: "https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&w=800&q=80",
+  onboarding: "https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?auto=format&fit=crop&w=800&q=80",
+};
+
+function ServiceIcon({ id, className = "h-5 w-5" }: { id: string; className?: string }) {
+  switch (id) {
+    case "outdoor":
+      return (
+        <svg className={className} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+          <path strokeLinecap="round" strokeLinejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+          <path strokeLinecap="round" strokeLinejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+        </svg>
+      );
+    case "indoor":
+      return (
+        <svg className={className} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+          <path strokeLinecap="round" strokeLinejoin="round" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+        </svg>
+      );
+    case "virtual":
+      return (
+        <svg className={className} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+          <path strokeLinecap="round" strokeLinejoin="round" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+        </svg>
+      );
+    case "offsites":
+      return (
+        <svg className={className} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+          <path strokeLinecap="round" strokeLinejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+        </svg>
+      );
+    case "leadership":
+      return (
+        <svg className={className} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+          <path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
+        </svg>
+      );
+    case "flagship":
+      return (
+        <svg className={className} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+          <path strokeLinecap="round" strokeLinejoin="round" d="M11 5.882V19.24a1.76 1.76 0 01-3.417.592l-2.147-6.15M18 13a3 3 0 100-6M5.436 13.683A4.001 4.001 0 017 6h1.832c4.1 0 7.625-1.234 9.168-3v14c-1.543-1.766-5.067-3-9.168-3H7a3.988 3.988 0 01-1.564-.317z" />
+        </svg>
+      );
+    case "wellness":
+      return (
+        <svg className={className} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+          <path strokeLinecap="round" strokeLinejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+        </svg>
+      );
+    case "onboarding":
+      return (
+        <svg className={className} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+          <path strokeLinecap="round" strokeLinejoin="round" d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z" />
+        </svg>
+      );
+    default:
+      return (
+        <svg className={className} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+          <path strokeLinecap="round" strokeLinejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
+        </svg>
+      );
+  }
+}
+
 export default function ServicesPage() {
   const jsonLd = {
     "@context": "https://schema.org",
@@ -268,134 +339,287 @@ export default function ServicesPage() {
 
   return (
     <>
-      <section className="border-b border-navy-900/5 bg-gradient-to-b from-electric-50/60 to-white">
-        <div className="container-site py-14">
-          <h1 className="max-w-3xl text-3xl font-extrabold tracking-tight text-navy-900 sm:text-4xl">
-            What Kind of Team Building Service Does Your Team Actually Need?
-          </h1>
-          <h2 className="mt-8 text-xl font-bold text-navy-900">
-            Why every team building website feels like a restaurant menu
-          </h2>
-          <div className="prose-site mt-4 max-w-3xl">
-            <p>
-              We organised this page by <strong>what's actually happening in
-              your team</strong> — not by a menu of activities. Pick the
-              situation that sounds like yours.
-            </p>
+      <style
+        dangerouslySetInnerHTML={{
+          __html: `
+            @keyframes fadeIn {
+              from { opacity: 0; transform: translateY(20px); }
+              to { opacity: 1; transform: translateY(0); }
+            }
+            .animate-fade-in {
+              animation: fadeIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            }
+            .animate-fade-in-delayed {
+              opacity: 0;
+              animation: fadeIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.15s forwards;
+            }
+            .animate-fade-in-delayed-2 {
+              opacity: 0;
+              animation: fadeIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.3s forwards;
+            }
+          `,
+        }}
+      />
+
+      {/* Hero Section */}
+      <section className="relative overflow-hidden border-b border-navy-900/5 bg-gradient-to-b from-electric-50/40 via-white to-white pt-10 pb-20 lg:pt-14 lg:pb-32">
+        <div
+          className="absolute inset-0 -z-10 opacity-30"
+          style={{
+            backgroundImage: "radial-gradient(rgba(105, 41, 212, 0.08) 1px, transparent 0)",
+            backgroundSize: "24px 24px",
+          }}
+        />
+        <div className="absolute top-0 right-1/4 -z-10 h-96 w-96 rounded-full bg-electric-100/30 blur-3xl" />
+        <div className="absolute bottom-0 left-1/4 -z-10 h-72 w-72 rounded-full bg-sunrise-100/20 blur-3xl" />
+
+        <div className="container-site">
+          <div className="max-w-4xl space-y-8 animate-fade-in">
+            <div className="space-y-4">
+              <h1 className="text-4xl font-extrabold tracking-tight text-navy-900 sm:text-5xl lg:text-6xl leading-[1.1] sm:leading-[1.15]">
+                What Kind of Team Building Service Does Your Team Actually Need?
+              </h1>
+              <h2 className="text-xl sm:text-2xl font-extrabold tracking-tight text-electric-600 mt-4">
+                Why every team building website feels like a restaurant menu
+              </h2>
+            </div>
+
+            <div className="prose-site text-lg leading-relaxed text-navy-800/90 max-w-3xl animate-fade-in-delayed">
+              <p>
+                We organised this page by <strong>what's actually happening in
+                your team</strong> — not by a menu of activities. Pick the
+                situation that sounds like yours.
+              </p>
+            </div>
+
+            <div className="max-w-3xl animate-fade-in-delayed-2">
+              <ReadMore>
+                <div className="space-y-4 pt-2 text-navy-800/80 text-base leading-relaxed">
+                  <p>
+                    Most of them are. Pick a few activities. Add a venue. Get a bill.
+                    That works if you already know exactly what you need. Most HR
+                    managers don't, and that's not a flaw. That's the job.
+                  </p>
+                  <p>
+                    You've been handed a budget, a headcount, and a vague brief like
+                    &ldquo;do something for the team.&rdquo; Scroll through the
+                    categories below. Each one tells you when to use it, what it's
+                    good for, and what to expect. If you're still not sure which fits
+                    — that's normal. A 20-minute call sorts it out faster than
+                    another hour of browsing.
+                  </p>
+                </div>
+              </ReadMore>
+            </div>
+
+            <div className="pt-2 animate-fade-in-delayed-2">
+              <Link href="/contact-us" className="inline-flex items-center justify-center gap-2 rounded-xl bg-electric-600 px-7 py-4 text-sm font-bold text-white shadow-card transition-all duration-300 hover:bg-electric-700 hover:shadow-lift hover:-translate-y-0.5 active:scale-[0.98]">
+                Book your free program design call →
+              </Link>
+            </div>
+
+            {/* Quick Links Nav */}
+            <div className="border-t border-navy-900/5 pt-8 animate-fade-in-delayed-2">
+              <p className="text-xs font-extrabold uppercase tracking-widest text-navy-700 mb-4">
+                Quick Navigation
+              </p>
+              <nav className="flex flex-wrap gap-2.5" aria-label="Services">
+                {services.map((s) => (
+                  <a
+                    key={s.id}
+                    href={`#${s.id}`}
+                    className="inline-flex items-center gap-2 rounded-xl border border-navy-900/5 bg-white px-4 py-2.5 text-xs sm:text-sm font-bold text-navy-800 shadow-card transition-all duration-300 hover:border-electric-400 hover:text-electric-600 hover:shadow-lift hover:-translate-y-0.5"
+                  >
+                    <span className="text-electric-500">
+                      <ServiceIcon id={s.id} className="h-4 w-4" />
+                    </span>
+                    {s.title}
+                  </a>
+                ))}
+              </nav>
+            </div>
           </div>
-          <ReadMore>
-            <p>
-              Most of them are. Pick a few activities. Add a venue. Get a bill.
-              That works if you already know exactly what you need. Most HR
-              managers don't, and that's not a flaw. That's the job.
-            </p>
-            <p>
-              You've been handed a budget, a headcount, and a vague brief like
-              &ldquo;do something for the team.&rdquo; Scroll through the
-              categories below. Each one tells you when to use it, what it's
-              good for, and what to expect. If you're still not sure which fits
-              — that's normal. A 20-minute call sorts it out faster than
-              another hour of browsing.
-            </p>
-          </ReadMore>
-          <Link href="/contact-us" className="btn-primary mt-6">
-            Book your free program design call →
-          </Link>
-          <nav className="mt-8 flex flex-wrap gap-2" aria-label="Services">
-            {services.map((s) => (
-              <a key={s.id} href={`#${s.id}`} className="tag hover:bg-electric-100">
-                {s.title}
-              </a>
-            ))}
-          </nav>
         </div>
       </section>
 
+      {/* Services List */}
       {services.map((s, idx) => (
         <section
           key={s.id}
           id={s.id}
-          className={idx % 2 === 1 ? "mt-14 bg-mist py-14" : "container-site mt-14"}
+          className={`py-20 lg:py-28 transition-all duration-500 ${
+            idx % 2 === 1 ? "bg-mist/35 border-y border-navy-900/5" : "bg-white"
+          }`}
         >
-          <div className={idx % 2 === 1 ? "container-site" : ""}>
-            <h2 className="h-section">{s.title}</h2>
-            <div className="mt-5 grid gap-8 lg:grid-cols-[1fr_360px]">
-              <div>
-                <div className="prose-site max-w-3xl">
-                  <p>{s.body[0]}</p>
+          <div className="container-site">
+            <div className="grid gap-12 lg:grid-cols-12 items-start">
+              
+              {/* Content Column */}
+              <div
+                className={`space-y-8 lg:col-span-7 ${
+                  idx % 2 === 1 ? "lg:order-2" : "lg:order-1"
+                }`}
+              >
+                {/* Header */}
+                <div className="space-y-4">
+                  <div className="inline-flex items-center gap-2.5 rounded-2xl bg-electric-50 px-4 py-2 text-xs font-bold uppercase tracking-wider text-electric-700">
+                    <ServiceIcon id={s.id} className="h-4 w-4" />
+                    <span>Service Category</span>
+                  </div>
+                  <h2 className="text-3xl font-extrabold tracking-tight text-navy-900 sm:text-4xl">
+                    {s.title}
+                  </h2>
                 </div>
-                {s.body.length > 1 && (
-                  <ReadMore>
-                    {s.body.slice(1).map((p, i) => (
-                      <p key={i}>{p}</p>
-                    ))}
-                  </ReadMore>
-                )}
-                <h3 className="mt-7 font-bold text-navy-900">{s.listHeading}</h3>
-                <ul className="mt-4 grid gap-3 sm:grid-cols-2">
-                  {s.items.map((item) => (
-                    <li key={item.name} className="rounded-xl border border-navy-900/10 bg-white p-4">
-                      <p className="text-sm font-semibold text-navy-900">{item.name}</p>
-                      <p className="mt-1 text-sm leading-6 text-navy-800/75">{item.desc}</p>
-                    </li>
-                  ))}
-                </ul>
-                {s.extra && (
-                  <p className="mt-5 text-sm text-navy-800/75">
-                    {s.extra.text}{" "}
-                    <Link href={s.extra.href} className="font-semibold text-electric-600 hover:underline">
-                      {s.extra.linkLabel}
-                    </Link>
-                    .
+
+                {/* Description */}
+                <div className="prose-site text-base leading-relaxed text-navy-800/90 max-w-none">
+                  <p className="text-lg leading-relaxed text-navy-800/95 font-medium">{s.body[0]}</p>
+                  {s.body.length > 1 && (
+                    <ReadMore>
+                      <div className="space-y-4 pt-2 text-navy-800/80">
+                        {s.body.slice(1).map((p, i) => (
+                          <p key={i}>{p}</p>
+                        ))}
+                      </div>
+                    </ReadMore>
+                  )}
+                </div>
+
+                {/* Use This When Sidebar */}
+                <div className="rounded-2xl border border-electric-100/60 bg-electric-50/20 p-6 backdrop-blur-sm shadow-[0_4px_20px_rgba(123,63,242,0.02)]">
+                  <p className="text-xs font-extrabold uppercase tracking-widest text-electric-700">
+                    Use this when
                   </p>
-                )}
-                <Link href="/contact-us" className="btn-primary mt-6">
-                  {s.cta}
-                </Link>
+                  <ul className="mt-4 space-y-3">
+                    {s.useWhen.map((u) => (
+                      <li key={u} className="flex items-start gap-2.5 text-sm leading-relaxed text-navy-800/85">
+                        <span className="mt-1 flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-electric-100 text-electric-600">
+                          <svg className="h-2.5 w-2.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                          </svg>
+                        </span>
+                        <span>{u}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                {/* Activities List */}
+                <div className="space-y-4">
+                  <h3 className="text-sm font-extrabold uppercase tracking-wider text-navy-700">
+                    {s.listHeading}
+                  </h3>
+                  <ul className="grid gap-4 sm:grid-cols-2">
+                    {s.items.map((item) => (
+                      <li
+                        key={item.name}
+                        className="group/item rounded-2xl border border-navy-900/5 bg-white p-5 shadow-card transition-all duration-300 hover:border-electric-300 hover:shadow-lift hover:-translate-y-0.5"
+                      >
+                        <p className="text-sm font-bold text-navy-900 group-hover/item:text-electric-600 transition-colors">
+                          {item.name}
+                        </p>
+                        <p className="mt-1.5 text-[13px] leading-relaxed text-navy-800/70">
+                          {item.desc}
+                        </p>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                {/* Extra & CTA */}
+                <div className="pt-4 space-y-6">
+                  {s.extra && (
+                    <p className="text-sm text-navy-800/75">
+                      {s.extra.text}{" "}
+                      <Link
+                        href={s.extra.href}
+                        className="font-semibold text-electric-600 hover:text-electric-700 hover:underline transition-colors"
+                      >
+                        {s.extra.linkLabel}
+                      </Link>
+                      .
+                    </p>
+                  )}
+                  <div>
+                    <Link
+                      href="/contact-us"
+                      className="inline-flex items-center justify-center gap-2 rounded-xl bg-electric-600 px-6 py-3.5 text-sm font-bold text-white shadow-card transition-all duration-300 hover:bg-electric-700 hover:shadow-lift hover:-translate-y-0.5 active:scale-[0.98]"
+                    >
+                      {s.cta}
+                    </Link>
+                  </div>
+                </div>
+
               </div>
-              <aside className="h-fit rounded-2xl border border-electric-100 bg-electric-50/50 p-6 lg:sticky lg:top-24">
-                <p className="text-xs font-bold uppercase tracking-wide text-electric-700">
-                  Use this when
-                </p>
-                <ul className="mt-3 space-y-2.5">
-                  {s.useWhen.map((u) => (
-                    <li key={u} className="flex gap-2 text-sm leading-6 text-navy-800/85">
-                      <span className="mt-0.5 text-electric-500">→</span>
-                      {u}
-                    </li>
-                  ))}
-                </ul>
-              </aside>
+
+              {/* Visual Column */}
+              <div
+                className={`lg:col-span-5 lg:sticky lg:top-28 ${
+                  idx % 2 === 1 ? "lg:order-1" : "lg:order-2"
+                }`}
+              >
+                <div className="group relative overflow-hidden rounded-3xl border border-navy-900/10 bg-white p-2.5 shadow-lift transition-all duration-500 hover:shadow-[0_20px_50px_rgba(21,21,31,0.15)]">
+                  <div className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl bg-mist">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      src={serviceImages[s.id]}
+                      alt={s.title}
+                      className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                      loading="lazy"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-navy-950/40 via-transparent to-transparent opacity-60 transition-opacity duration-500 group-hover:opacity-80" />
+                  </div>
+                  <div className="absolute -bottom-8 -right-8 -z-10 h-32 w-32 rounded-full bg-electric-400/10 blur-2xl group-hover:bg-electric-400/20 transition-all duration-500" />
+                </div>
+              </div>
+
             </div>
           </div>
         </section>
       ))}
 
-      <section className="container-site mt-14">
-        <h2 className="h-section">Still not sure which service fits?</h2>
-        <div className="prose-site mt-4 max-w-3xl">
-          <p>
-            That's the most honest place to be. The right answer depends on
-            your team, your timeline, your budget, and what's actually going on
-            internally — and that conversation usually takes 20 minutes, not a
-            brochure download.
-          </p>
-          <p>
-            Tell us roughly what you're working with: group size, city, dates,
-            and a line or two about your team. We'll come back within 24 hours
-            with two or three options that fit.
-          </p>
-        </div>
-        <div className="mt-6 flex flex-wrap gap-3">
-          <Link href="/contact-us" className="btn-primary">
-            Get your free 20-minute scoping call →
-          </Link>
-          <Link href="/blog" className="btn-secondary">
-            Browse the blog
-          </Link>
+      {/* Still Not Sure Section */}
+      <section className="container-site my-20 lg:my-32">
+        <div className="relative overflow-hidden rounded-3xl border border-navy-900/5 bg-gradient-to-br from-white via-mist/30 to-electric-50/10 p-8 sm:p-12 lg:p-16 shadow-[0_8px_30px_rgb(0,0,0,0.02)]">
+          <div className="absolute -right-20 -bottom-20 -z-10 h-80 w-80 rounded-full bg-electric-100/30 blur-3xl" />
+          <div className="absolute -left-20 -top-20 -z-10 h-64 w-64 rounded-full bg-sunrise-100/20 blur-3xl" />
+
+          <div className="max-w-3xl space-y-6">
+            <h2 className="text-3xl font-extrabold tracking-tight text-navy-900 sm:text-4xl">
+              Still not sure which service fits?
+            </h2>
+            <div className="prose-site text-base leading-relaxed text-navy-800/85 space-y-4">
+              <p>
+                That's the most honest place to be. The right answer depends on
+                your team, your timeline, your budget, and what's actually going on
+                internally — and that conversation usually takes 20 minutes, not a
+                brochure download.
+              </p>
+              <p>
+                Tell us roughly what you're working with: group size, city, dates,
+                and a line or two about your team. We'll come back within 24 hours
+                with two or three options that fit.
+              </p>
+            </div>
+            <div className="mt-8 flex flex-wrap gap-4 pt-2">
+              <Link
+                href="/contact-us"
+                className="inline-flex items-center justify-center gap-2 rounded-xl bg-electric-600 px-6 py-4 text-sm font-bold text-white shadow-card transition-all duration-300 hover:bg-electric-700 hover:shadow-lift hover:-translate-y-0.5 active:scale-[0.98]"
+              >
+                Get your free 20-minute scoping call →
+              </Link>
+              <Link
+                href="/blog"
+                className="inline-flex items-center justify-center gap-2 rounded-xl border border-navy-900/10 bg-white px-6 py-4 text-sm font-bold text-navy-900 shadow-card transition-all duration-300 hover:border-electric-400 hover:text-electric-600 hover:shadow-lift hover:-translate-y-0.5 active:scale-[0.98]"
+              >
+                Browse the blog
+              </Link>
+            </div>
+          </div>
         </div>
       </section>
 
+      <div className="border-t border-navy-900/5 my-12" />
       <FAQ items={faqs} />
       <CTASection />
       <script
