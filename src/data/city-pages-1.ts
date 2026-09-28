@@ -1,11 +1,11 @@
-import type { CityPage } from "./landing-types";
+﻿import type { CityPage } from "./landing-types";
 
 export const cityPages1: CityPage[] = [
   {
     slug: "team-building-activities-bangalore",
     city: "Bangalore",
     h1: "Team Building Activities in Bangalore",
-    metaTitle: "Team Building Activities in Bangalore | TeamBuildingActivities.in",
+    metaTitle: "Team Building Activities in Bangalore | TeamBuildingActivities.co.in",
     metaDescription:
       "Corporate team building activities in Bangalore — office formats, resort offsites toward Nandi Hills and Kanakapura, and virtual events for hybrid teams. Get a curated plan.",
     intro: [
@@ -82,7 +82,7 @@ export const cityPages1: CityPage[] = [
     slug: "team-building-activities-hyderabad",
     city: "Hyderabad",
     h1: "Team Building Activities in Hyderabad",
-    metaTitle: "Team Building Activities in Hyderabad | TeamBuildingActivities.in",
+    metaTitle: "Team Building Activities in Hyderabad | TeamBuildingActivities.co.in",
     metaDescription:
       "Corporate team building in Hyderabad — HITEC City office formats, resort offsites around Gandipet and Shamirpet, and large-campus engagement days. Get a curated plan.",
     intro: [
@@ -159,7 +159,7 @@ export const cityPages1: CityPage[] = [
     slug: "team-building-activities-chennai",
     city: "Chennai",
     h1: "Team Building Activities in Chennai",
-    metaTitle: "Team Building Activities in Chennai | TeamBuildingActivities.in",
+    metaTitle: "Team Building Activities in Chennai | TeamBuildingActivities.co.in",
     metaDescription:
       "Corporate team building in Chennai — OMR office formats, ECR beach offsites, Mahabalipuram day-outs and indoor programs built for the city's climate. Get a curated plan.",
     intro: [
@@ -236,7 +236,7 @@ export const cityPages1: CityPage[] = [
     slug: "team-building-activities-mumbai",
     city: "Mumbai",
     h1: "Team Building Activities in Mumbai",
-    metaTitle: "Team Building Activities in Mumbai | TeamBuildingActivities.in",
+    metaTitle: "Team Building Activities in Mumbai | TeamBuildingActivities.co.in",
     metaDescription:
       "Corporate team building in Mumbai — in-office formats for BKC and Lower Parel, offsites to Lonavala and Karjat, and monsoon-proof indoor programs. Get a curated plan.",
     intro: [

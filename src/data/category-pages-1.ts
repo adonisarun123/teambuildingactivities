@@ -1,10 +1,10 @@
-import type { CategoryPage } from "./landing-types";
+﻿import type { CategoryPage } from "./landing-types";
 
 export const categoryPages1: CategoryPage[] = [
   {
     slug: "indoor-team-building-activities",
     h1: "Indoor Team Building Activities",
-    metaTitle: "Indoor Team Building Activities for Employees | TeamBuildingActivities.in",
+    metaTitle: "Indoor Team Building Activities for Employees | TeamBuildingActivities.co.in",
     metaDescription:
       "Weather-proof indoor team building activities for Indian offices — drum circles, escape rooms, cook-offs and workshops that run in any hall or meeting room. Get a curated plan.",
     matchFormat: "Indoor",
@@ -76,7 +76,7 @@ export const categoryPages1: CategoryPage[] = [
   {
     slug: "outdoor-team-building-activities",
     h1: "Outdoor Team Building Activities",
-    metaTitle: "Outdoor Team Building Activities & Games in India | TeamBuildingActivities.in",
+    metaTitle: "Outdoor Team Building Activities & Games in India | TeamBuildingActivities.co.in",
     metaDescription:
       "High-energy outdoor team building activities across India — treasure hunts, raft building, human foosball, sports days and more. Expert facilitation, end-to-end planning.",
     matchFormat: "Outdoor",
@@ -147,7 +147,7 @@ export const categoryPages1: CategoryPage[] = [
   {
     slug: "virtual-team-building-activities",
     h1: "Virtual Team Building Activities",
-    metaTitle: "Virtual Team Building Activities for Remote Teams | TeamBuildingActivities.in",
+    metaTitle: "Virtual Team Building Activities for Remote Teams | TeamBuildingActivities.co.in",
     metaDescription:
       "Host-led virtual team building for remote and hybrid teams in India — trivia championships, murder mysteries, scavenger hunts. No downloads, full participation, real laughter.",
     matchFormat: "Virtual",
@@ -215,7 +215,7 @@ export const categoryPages1: CategoryPage[] = [
   {
     slug: "fun-team-building-activities",
     h1: "Fun Team Building Activities",
-    metaTitle: "Fun Team Building Activities Employees Actually Enjoy | TeamBuildingActivities.in",
+    metaTitle: "Fun Team Building Activities Employees Actually Enjoy | TeamBuildingActivities.co.in",
     metaDescription:
       "Fun-first team building activities for Indian teams — gameshows, drum circles, cook-offs, human foosball. Laughter-per-minute formats with zero cringe. Plan yours.",
     matchCategory: "fun",
@@ -286,7 +286,7 @@ export const categoryPages1: CategoryPage[] = [
   {
     slug: "leadership-team-building-activities",
     h1: "Leadership Team Building Activities",
-    metaTitle: "Leadership Team Building Activities & Exercises | TeamBuildingActivities.in",
+    metaTitle: "Leadership Team Building Activities & Exercises | TeamBuildingActivities.co.in",
     metaDescription:
       "Leadership team building activities that surface real behaviour — raft builds, bridge challenges, improv status labs. Designed for managers, leadership pods and exec offsites.",
     matchCategory: "leadership",

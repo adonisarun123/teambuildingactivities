@@ -1,4 +1,4 @@
-# teambuildingactivities.in
+﻿# teambuildingactivities.co.in
 
 SEO-focused microsite for corporate team building activities in India.
 Next.js 14 (App Router) + TypeScript + Tailwind CSS, fully statically generated.
@@ -18,7 +18,7 @@ npm run build      # production build (all pages static)
 2. **Lead form backend** — `src/components/LeadForm.tsx` currently opens a
    pre-filled WhatsApp message. Swap `handleSubmit` for a POST to Formspree,
    a route handler, or your CRM webhook.
-3. **Domain** — `site.url` is set to `https://teambuildingactivities.in`;
+3. **Domain** — `site.url` is set to `https://teambuildingactivities.co.in`;
    update if the canonical domain differs.
 
 ## Structure

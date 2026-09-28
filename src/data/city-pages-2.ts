@@ -1,11 +1,11 @@
-import type { CityPage } from "./landing-types";
+﻿import type { CityPage } from "./landing-types";
 
 export const cityPages2: CityPage[] = [
   {
     slug: "team-building-activities-pune",
     city: "Pune",
     h1: "Team Building Activities in Pune",
-    metaTitle: "Team Building Activities in Pune | TeamBuildingActivities.in",
+    metaTitle: "Team Building Activities in Pune | TeamBuildingActivities.co.in",
     metaDescription:
       "Corporate team building in Pune — Hinjawadi and Kharadi office formats, offsites to Mulshi, Lavasa and Panshet, and year-round outdoor programs. Get a curated plan.",
     intro: [
@@ -82,7 +82,7 @@ export const cityPages2: CityPage[] = [
     slug: "team-building-activities-delhi-ncr",
     city: "Delhi NCR",
     h1: "Team Building Activities in Delhi NCR",
-    metaTitle: "Team Building Activities in Delhi NCR | TeamBuildingActivities.in",
+    metaTitle: "Team Building Activities in Delhi NCR | TeamBuildingActivities.co.in",
     metaDescription:
       "Corporate team building across Delhi NCR — office formats, farmhouse events, resort offsites toward Manesar, Sohna and Damdama, and winter sports days. Get a curated plan.",
     intro: [
@@ -159,7 +159,7 @@ export const cityPages2: CityPage[] = [
     slug: "team-building-activities-gurgaon",
     city: "Gurgaon",
     h1: "Team Building Activities in Gurgaon",
-    metaTitle: "Team Building Activities in Gurgaon (Gurugram) | TeamBuildingActivities.in",
+    metaTitle: "Team Building Activities in Gurgaon (Gurugram) | TeamBuildingActivities.co.in",
     metaDescription:
       "Corporate team building in Gurgaon — tower-floor office formats on Golf Course Road and Cyber City, offsites to Manesar, Sohna and Damdama. Get a curated plan.",
     intro: [
@@ -236,7 +236,7 @@ export const cityPages2: CityPage[] = [
     slug: "team-building-activities-noida",
     city: "Noida",
     h1: "Team Building Activities in Noida",
-    metaTitle: "Team Building Activities in Noida | TeamBuildingActivities.in",
+    metaTitle: "Team Building Activities in Noida | TeamBuildingActivities.co.in",
     metaDescription:
       "Corporate team building in Noida — sector office formats, expressway campus events, offsites toward Greater Noida and the Yamuna belt. Get a curated plan.",
     intro: [
